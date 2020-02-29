@@ -1,0 +1,9 @@
+*.pyc
+*~
+__pycache__
+.DS_Store
+*migrations/
+*.sqlite3
+debug-error.log
+*media/
+manage.py
