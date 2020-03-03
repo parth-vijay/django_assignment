@@ -1,0 +1,110 @@
+<!DOCTYPE html>{% load static %}
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+	<head>
+	   <meta charset="utf-8" />
+	   <title>Clear Amber</title>
+	   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+	   <meta name="description" content="Clear Amber" />
+	   <meta name="keywords" content="Clear Amber" />
+	   <meta name="author" content="" />
+	   <meta name="MobileOptimized" content="320" />
+	   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	   <link rel="stylesheet" type="text/css" href="{% get_static_prefix %}css/header.css" />
+	   
+	</head>
+	<body>
+		<header>
+			<section>
+				<div class="headertop">
+					<span>Enquiries: <a href="mailto:info@clearamber.com">info@clearamber.com</a> </span><br>
+					<span class="contactItemBold">Support: <a href="tel:08453844444">0845 384 44 44</a> </span><br>
+					<span class="contactItemBold">International Support: <a href="tel:00441738620084">0044 1738 620084</a> </span>
+				</div>
+				<div class="headerleft">
+					<div class="logo">
+						<a href="{% url 'home:home' %}"><img src="{% get_static_prefix %}images/logonew.png" alt="logo"></a>
+					</div>
+				</div>
+				<div class="headerright">
+					<div class="headerrightpart">
+						<div class="headerUserArea login">
+							<a href="{% url 'home:login' %}">
+								<i class="newIconTradeArea"></i><span>Please Log In</span>
+							</a>
+							<a href=""><i class="icon-home"></i></a>
+							<div class="toggleMenu menuicon"><i class="icon-reorder"></i></div>
+						</div>
+					</div>
+				</div>
+				<div class="news">
+					<a id="headerNewsButton" class="newsButton button" href="#">News</a>
+				</div>
+			</section>
+			<div class="mainmenu">
+				<div class="innersection">
+					<ul class="headermenu">
+						<li>
+							<a href="">ALUKAP<sup>&reg;</sup>-SS</a>
+							<div class="submenu">
+								<div class="innersection">
+									<ul>
+										<li><a href="">ALUKAP<sup>&reg;</sup>-SS: HIGH SPAN</a></li>
+										<li><a href="">ALUKAP<sup>&reg;</sup>-SS: LOW PROFILE</a></li>
+										<li><a href="">ALUKAP<sup>&reg;</sup>-SS: POSTS</a></li>
+										<li><a href="">ALUKAP<sup>&reg;</sup>-SS: WALL & EAVES BEAM</a></li>
+									</ul>
+								</div>
+							</div>
+						</li>
+						<li><a href=""> ALUKAP<sup>&reg;</sup>-XR</a></li>
+						<li><a href="">AXGARD<sup>&reg;</sup></a></li>
+						<li><a href="">AXIOME<sup>&reg;</sup></a></li>
+						<li><a href="">More Brands...</a></li>
+					</ul>
+				</div>>
+			</div>
+		</header>
+		{% block content%}{% endblock %}
+		<footer>
+			<div class="footersection">
+				<div class="footermenuall">
+					<div class="footermenu">
+						<h4>Useful Links</h4>
+						<ul>
+							<li><a href="">About Clear Amber</a></li>
+							<li><a href="">News & Updates</a></li>
+							<li><a href="">Careers</a></li>
+							<li><a href="">RAL Colours</a></li>
+						</ul>
+					</div>
+					<div class="footermenu">
+						<h4>Support</h4>
+						<ul>
+							<li><a href="">Contact</a></li>
+						</ul>
+					</div>
+					<div class="footermenu">
+						<h4>Legal</h4>
+						<ul>
+							<li><a href="">Terms</a></li>
+							<li><a href="">Cookie Policy</a></li>
+							<li><a href="">Privacy Notice</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="copyright">
+					<div class="copyright1">Copyright &copy; Clear Amber Group Ltd 2014 – 2020  all rights reserved</div>
+				</div>
+			</div>
+		</footer>
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+		<script src="{% get_static_prefix %}js/javascripts.js"></script>
+	</body>
+</html>
