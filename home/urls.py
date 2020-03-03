@@ -7,5 +7,6 @@ app_name='home'
 
 urlpatterns=[
 	path('login/', auth_views.LoginView.as_view(template_name='login.html'), name='login'),
+	path('product/', product, name='product'),
 	path('', home, name='home'),
 ]
