@@ -15,7 +15,7 @@
 	   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	   <link rel="stylesheet" type="text/css" href="{% get_static_prefix %}css/header.css" />
-	   
+	   <link rel="stylesheet" type="text/css" href="{% get_static_prefix %}css/productimage.css" />
 	</head>
 	<body>
 		<header>
@@ -49,22 +49,65 @@
 				<div class="innersection">
 					<ul class="headermenu">
 						<li>
-							<a href="">ALUKAP<sup>&reg;</sup>-SS</a>
+							<a href="{% url 'home:product' %}">ALUKAP<sup>&reg;</sup>-SS</a>
 							<div class="submenu">
 								<div class="innersection">
 									<ul>
-										<li><a href="">ALUKAP<sup>&reg;</sup>-SS: HIGH SPAN</a></li>
-										<li><a href="">ALUKAP<sup>&reg;</sup>-SS: LOW PROFILE</a></li>
-										<li><a href="">ALUKAP<sup>&reg;</sup>-SS: POSTS</a></li>
-										<li><a href="">ALUKAP<sup>&reg;</sup>-SS: WALL & EAVES BEAM</a></li>
+										<li><a href="#">ALUKAP<sup>&reg;</sup>-SS: HIGH SPAN</a></li>
+										<li><a href="#">ALUKAP<sup>&reg;</sup>-SS: LOW PROFILE</a></li>
+										<li><a href="#">ALUKAP<sup>&reg;</sup>-SS: POSTS</a></li>
+										<li><a href="#">ALUKAP<sup>&reg;</sup>-SS: WALL & EAVES BEAM</a></li>
 									</ul>
 								</div>
 							</div>
 						</li>
-						<li><a href=""> ALUKAP<sup>&reg;</sup>-XR</a></li>
-						<li><a href="">AXGARD<sup>&reg;</sup></a></li>
-						<li><a href="">AXIOME<sup>&reg;</sup></a></li>
-						<li><a href="">More Brands...</a></li>
+						<li><a href="#"> ALUKAP<sup>&reg;</sup>-XR</a>
+							<div class="submenu">
+								<div class="innersection">
+									<ul>
+										<li><a href="#">ALUKAP<sup>&reg;</sup>-XR: 45mm BARS</a></li>
+										<li><a href="#">ALUKAP<sup>&reg;</sup>-XR: 60mm BARS</a></li>
+										<li><a href="#">ALUKAP<sup>&reg;</sup>-XR: HIP & VALLEY BARS</a></li>
+										<li><a href="#">ALUKAP<sup>&reg;</sup>-XR: RIDGE BARS</a></li>
+									</ul>
+								</div>
+							</div>
+						</li>
+						<li><a href="#">AXGARD<sup>&reg;</sup></a>
+							<div class="submenu">
+								<div class="innersection">
+									<ul>
+										<li><a href="#">AXGARD<sup>&reg;</sup>-MSR: SHATTER PROOF MIRRORS</a></li>
+										<li><a href="#">AXGARD<sup>&reg;</sup>: CLEAR</a></li>
+										<li><a href="#">AXGARD<sup>&reg;</sup>: PATTERNED</a></li>
+										<li><a href="#">AXGARD<sup>&reg;</sup>: TINTS</a></li>
+									</ul>
+								</div>
+							</div>
+						</li>
+						<li><a href="#">AXIOME<sup>&reg;</sup></a>
+							<div class="submenu">
+								<div class="innersection">
+									<ul>
+										<li><a href="#">AXIOME<sup>&reg;</sup>: BRONZE SHEET</a></li>
+										<li><a href="#">AXIOME<sup>&reg;</sup>: CLEAR SHEET</a></li>
+										<li><a href="#">AXIOME<sup>&reg;</sup>: OPAL SHEET</a></li>
+										<li><a href="#">SOLEK<sup>&reg;</sup>: HEAT-REFLECTIVE MULTIWALL SHEET</a></li>
+									</ul>
+								</div>
+							</div>
+						</li>
+						<li><a href="#">More Brands...</a>
+							<div class="submenu">
+								<div class="innersection">
+									<ul>
+										<li><a href="#">CORRAPOL<sup>&reg;</sup></a></li>
+										<li><a href="#">HYGICLAD<sup>&reg;</sup></a></li>
+										<li><a href="#">ADDITIONAL GLAZING SYSTEMS</a></li>
+									</ul>
+								</div>
+							</div>
+						</li>
 					</ul>
 				</div>>
 			</div>
