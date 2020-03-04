@@ -49,6 +49,30 @@ a {
 	width: 75%;
 	height: 102px;
 }
+.headerUserArea .homeicon{
+    /*float: left;*/
+    display: block;
+    padding: 7px 9px;
+    border-bottom-right-radius: 100%;
+    border-top-right-radius: 100%;
+}
+.homebutton {
+    position: relative;
+    background: #57595b;
+    border: none;
+    padding: 8px 45px 8px 15px;
+    border-radius: 0 15px 0 0;
+    font-weight: 600;
+    font-size: 1.3em;
+    color: #fff;
+    -webkit-transition: background 0.5s;
+    transition: background 0.5s;
+    line-height: 1.462;
+}
+.headerUserArea .homeicon i {
+    line-height: 28px;
+    font-size: 2rem;
+}
 .headerUserArea > a, .headerUserArea > div {
 	float: right;
 }
