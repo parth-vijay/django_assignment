@@ -11,6 +11,7 @@ header {
 	width: 100%;
 	background: #F38E2C;
 	position: relative;
+	float: left;
 }
 section {
 	width: 1180px;
@@ -48,6 +49,30 @@ a {
 	float: right;
 	width: 75%;
 	height: 102px;
+}
+.headerUserArea .homeicon{
+    /*float: left;*/
+    display: block;
+    padding: 7px 9px;
+    border-bottom-right-radius: 100%;
+    border-top-right-radius: 100%;
+}
+.homebutton {
+    position: relative;
+    background: #57595b;
+    border: none;
+    padding: 8px 45px 8px 15px;
+    border-radius: 0 15px 0 0;
+    font-weight: 600;
+    font-size: 1.3em;
+    color: #fff;
+    -webkit-transition: background 0.5s;
+    transition: background 0.5s;
+    line-height: 1.462;
+}
+.headerUserArea .homeicon i {
+    line-height: 28px;
+    font-size: 2rem;
 }
 .headerUserArea > a, .headerUserArea > div {
 	float: right;
@@ -202,7 +227,7 @@ a {
     color: #fff;
     text-decoration: none;
 }
-.mainsection .section1 a.viewproduct .fa-angle-right {
+.mainsection .section1 a.viewproduct .fa-caret-right {
     float: right;
     padding: 0px 23px 5px 0;
     font-size: 1.4em;
@@ -211,6 +236,29 @@ a {
     top: 15px;
     right: 14px;
     left: auto;
+}
+.formsection {
+	width: 450px;
+	margin: 0 auto;
+}
+.loginform {
+    width: 100%;
+    float: left;
+    padding: 16px 10px;
+    margin: 3px 0px;
+}
+.loginform button{
+	background-color: #57595b;
+	border: #57595b;
+}
+.loginform button:hover{
+	background-color: #57595b;
+	border-color: #F38E2C;
+}
+.loginform label{
+	font-size: 20px;
+    font-weight: bold;
+    color: #fff;
 }
 footer{
 	width: 100%;

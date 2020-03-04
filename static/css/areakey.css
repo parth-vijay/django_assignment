@@ -1,0 +1,48 @@
+.areakeyinfo{
+	background: #beefeff5;
+    width: 100%;
+    float: left;
+}
+.areakeyinner {
+    width: 1117px;
+    margin: 0 auto;
+}
+.areasection {
+    width: 100%;
+    float: left;
+    margin-bottom: 17px;
+}
+.arealeft {
+    width: 49%;
+    float: left;
+}
+.arearight {
+    width: 49%;
+    float: left;
+}
+.arearight a{
+	float: right;
+}
+.areacontent {
+    width: 100%;
+    float: left;
+    /* border: 1px; */
+    background: #f1eadd;
+    margin-bottom: 20px;
+}
+.areacontent p{
+	color: #b79350;
+	padding: 0px 17px;
+	margin: 13px 0;
+	font-size: 1em;
+}
+.areakeyupload button {
+    background: #6c757d;
+    border-color: #6c757d;
+    border-radius: 0 27px 0 0;
+    line-height: 1.2;
+}
+.areakeyupload button:hover{
+	background: #6c757d;
+	border-color: #6c757d;
+}
