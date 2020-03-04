@@ -10,7 +10,7 @@
 .areasection {
     width: 100%;
     float: left;
-    margin-bottom: 17px;
+    margin: 17px 0;
 }
 .arealeft {
     width: 49%;
@@ -22,6 +22,20 @@
 }
 .arearight a{
 	float: right;
+}
+.rapidkeybtn {
+    border: 1px solid #636465;
+    border-radius: 10px;
+    background: linear-gradient(180deg, #0A83DD 0%, #00BAF2 50.08%, #0A83DD 100%);
+    padding: 9px 73px 9px 19px;
+    color: #3B3B3B;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 22px;
+    display: inline-block;
+    position: relative;
+    margin-bottom: 20px;
+    float: right;
 }
 .areacontent {
     width: 100%;
@@ -36,6 +50,10 @@
 	margin: 13px 0;
 	font-size: 1em;
 }
+.areakeyupload {
+    width: 100%;
+    float: left;
+}
 .areakeyupload button {
     background: #6c757d;
     border-color: #6c757d;
@@ -45,4 +63,18 @@
 .areakeyupload button:hover{
 	background: #6c757d;
 	border-color: #6c757d;
+}
+.btn .btn-primary .active{
+	color: #fff;
+    background-color: #3d4248;
+    border-color: #3d4248;
+}
+
+.table .thead-dark th {
+    color: #fff;
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+.table .thead-dark tr:nth-child(1) {
+    background: #f1c393;
 }
