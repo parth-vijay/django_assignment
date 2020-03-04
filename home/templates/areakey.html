@@ -4,16 +4,16 @@
 	<div class="areakeyinfo">
 		<div class="areakeyinner">
 			<div class="areasection">
-				<div class="arealeft">RapidKey<sup>&reg;</sup></div>
+				<div class="arealeft"><img src="{% get_static_prefix%}images/areakey/rapidkey_logo.png" height="60"></div>
 				<div class="arearight">
-					<a href="#" class="export"><button type="button" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-download-alt"></span> Export RapidKey<sup>&reg;</sup>template</button></a>
+					<a href="#" class="export rapidkeybtn" download="RapidKey Order Template.csv"> Export RapidKey<sup>&reg;</sup></a>
 				</div>
 			</div>
 			<div class="areacontent">
 				<p>WELCOME! - PLEASE NOTE: You are <strong>logged</strong> in to a <strong><i>confidential</i> privileged area</strong>. Information on these pages is for the exclusive viewing and use of your company and information such as net prices, and other confidential information herein must be kept confidential at all times.</p>
 			</div>
 			<div class="areakeyupload">
-				<button type="button" class="btn btn-primary">Order Upload</button>
+				<button type="button" class="active btn btn-primary">Order Upload</button>
 				<button type="button" class="btn btn-secondary">Upload History</button>
 				<div class="dragndrop one">
 					<div class="item">
@@ -23,7 +23,7 @@
 									<div class="image-upload"> <label style="cursor: pointer;" for="file_upload"> <img src="" alt="" class="uploaded-image">
 											<div class="h-100">
 												<div class="dplay-tbl">
-													<div class="dplay-tbl-cell"> <i class="fa fa-cloud-upload"></i>
+													<div class="dplay-tbl-cell"><i class="fa fa-arrow-circle-down"></i>
 														<h5><b>Choose a file</b> or drag it here</h5>
 													</div>
 												</div>
@@ -38,13 +38,50 @@
 					</div>
 					<!--item-->
 				</div>
+				<div class="search-container">
+					<form>
+					  <input type="text" placeholder="Search.." name="search" style="width: 400px; border: 1px solid #807c7c;">
+					  <button type="submit">Search</button>
+					</form>
+				</div>
+				<div class="table-responsive">
+					<table class="table">
+						<thead class="thead-dark">
+							<tr>
+							  	<th scope="col">
+									<div class="form-check form-check-inline">
+										<input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+										<label class="form-check-label" for="inlineCheckbox1">select All</label>
+									</div>
+								</th>
+							  <th scope="col">Distributor Order Number</th>
+							  <th scope="col">Order Date Requested</th>
+							</tr>
+						</thead>
+					  	<tbody>
+							<tr>
+							  	<th scope="row">
+								  	<div class="form-check form-check-inline">
+										<input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+									</div>
+							  	</th>
+							  	<td>Mark</td>
+							  	<td>Otto</td>
+							</tr>
+							<tr>
+							  	<th scope="row">
+								  	<div class="form-check form-check-inline">
+										<input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+									</div>
+							  	</th>
+							  	<td>Jacob</td>
+							  	<td>Thornton</td>
+							</tr>
+					  	</tbody>
+					</table>
+				</div>
+				<div></div>
 			</div>
-			<div class="search-container">
-				<form action="/action_page.php">
-				  <input type="text" placeholder="Search.." name="search">
-				  <button type="submit">Submit</button>
-				</form>
-			  </div>
 		</div>
 	</div>
 </section>
