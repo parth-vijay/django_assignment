@@ -8,7 +8,7 @@ $(document).ready(function(){
 	}
 	$('.productmenulist h4 i').click(function(){
 		// $(this).toggleClass("fa-minus");
-		$('.productmenulist ul:nth-child(1)').parent().toggle();
+		$('.productmenulist ul:nth-child(1)').toggle();
 		
 		// $(this).toggleClass("fa fa-minus");
 		var ele = $('.changeicon');
@@ -18,5 +18,9 @@ $(document).ready(function(){
 		else{
 			ele.addClass('fa-plus').removeClass('fa-minus')
 		}
+	});
+	$('.areakeyupload button:nth-child(1)').click(function(){
+		$('.dragndrop .item form').show();
+
 	});
 });
