@@ -7,5 +7,6 @@ def home(request):
 def product(request):
 	return render(request, 'product.html')
 
-
+def areakey(request):
+	return render(request, 'areakey.html')
 # Create your views here
