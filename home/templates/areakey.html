@@ -1,0 +1,51 @@
+{% extends "index.html" %}{% load static %}
+{% block content %}
+<section>
+	<div class="areakeyinfo">
+		<div class="areakeyinner">
+			<div class="areasection">
+				<div class="arealeft">RapidKey<sup>&reg;</sup></div>
+				<div class="arearight">
+					<a href="#" class="export"><button type="button" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-download-alt"></span> Export RapidKey<sup>&reg;</sup>template</button></a>
+				</div>
+			</div>
+			<div class="areacontent">
+				<p>WELCOME! - PLEASE NOTE: You are <strong>logged</strong> in to a <strong><i>confidential</i> privileged area</strong>. Information on these pages is for the exclusive viewing and use of your company and information such as net prices, and other confidential information herein must be kept confidential at all times.</p>
+			</div>
+			<div class="areakeyupload">
+				<button type="button" class="btn btn-primary">Order Upload</button>
+				<button type="button" class="btn btn-secondary">Upload History</button>
+				<div class="dragndrop one">
+					<div class="item">
+						<form data-validation="true" action="#" method="post" enctype="multipart/form-data">
+							<div class="item-inner">
+								<div class="item-content">
+									<div class="image-upload"> <label style="cursor: pointer;" for="file_upload"> <img src="" alt="" class="uploaded-image">
+											<div class="h-100">
+												<div class="dplay-tbl">
+													<div class="dplay-tbl-cell"> <i class="fa fa-cloud-upload"></i>
+														<h5><b>Choose a file</b> or drag it here</h5>
+													</div>
+												</div>
+											</div>
+											<!--upload-content--> <input data-required="image" type="file" name="image_name" id="file_upload" class="image-input" data-traget-resolution="image_resolution" value="">
+										</label> </div>
+								</div>
+								<!--item-content-->
+							</div>
+							<!--item-inner-->
+						</form>
+					</div>
+					<!--item-->
+				</div>
+			</div>
+			<div class="search-container">
+				<form action="/action_page.php">
+				  <input type="text" placeholder="Search.." name="search">
+				  <button type="submit">Submit</button>
+				</form>
+			  </div>
+		</div>
+	</div>
+</section>
+{% endblock %}
