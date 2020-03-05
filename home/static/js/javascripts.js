@@ -23,4 +23,17 @@ $(document).ready(function(){
 		$('.dragndrop .item form').show();
 
 	});
+	$('.table-responsive table tbody tr:nth-child(1) th input').click(function(){
+		console.log('hello');
+		$('.selectallbtn').toggle();
+	});
+	$('.table-responsive table thead tr th:nth-child(1) input').click(function(){
+		console.log('hi');
+		if(this.checked){
+			$('.table-responsive table tbody tr th input').prop('checked', true)
+		}
+		else{
+			$('.table-responsive table tbody tr th input').prop('checked', false)
+		}
+	})
 });
