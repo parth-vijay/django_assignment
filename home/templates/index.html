@@ -14,10 +14,7 @@
 	   <meta name="MobileOptimized" content="320" />
 	   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	   <link rel="stylesheet" type="text/css" href="{% get_static_prefix%}css/drag&droparea.css">
 	   <link rel="stylesheet" type="text/css" href="{% get_static_prefix %}css/header.css" />
-	   <link rel="stylesheet" type="text/css" href="{% get_static_prefix %}css/productimage.css" />
-	   <link rel="stylesheet" type="text/css" href="{% get_static_prefix %}css/areakey.css" />
 	</head>
 	<body>
 		<header>
@@ -35,9 +32,17 @@
 				<div class="headerright">
 					<div class="headerrightpart">
 						<div class="headerUserArea login">
+							{% if user.is_authenticated %}
+								
+								<a href="{% url 'home:logout' %}">
+									<i class="newIconTradeArea"></i><span>logout</span>
+								</a><br>
+								<a href="#"><span>{{user.username}}</span></a>
+							{% else %}
 							<a href="{% url 'home:login' %}">
 								<i class="newIconTradeArea"></i><span>Please Log In</span>
 							</a>
+							{% endif %}
 							<a href="#" class="homeicon homebutton"><i class="fa fa-home"></i></a>
 							<div class="toggleMenu menuicon"><i class="icon-reorder"></i></div>
 						</div>
