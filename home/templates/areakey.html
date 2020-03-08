@@ -19,7 +19,7 @@
 					<div class="item">
 						<form data-validation="true" method="POST" enctype="multipart/form-data">
 							{% csrf_token %}
-							<!-- <div class="item-inner">
+							<div class="item-inner">
 								<div class="item-content">
 									<div class="image-upload"> <label style="cursor: pointer;" for="file_upload"> <img src="" alt="" class="uploaded-image">
 											<div class="h-100">
@@ -29,12 +29,13 @@
 													</div>
 												</div>
 											</div>
-											 <input data-required="image" type="file" name="csvfile" id="file_upload" class="image-input" data-traget-resolution="image_resolution" value="">
+											 <input data-required="image" type="file" name="csvfile" id="file_upload" class="image-input" data-traget-resolution="image_resolution" value="" onclick="formsubmit()">
+											 <input type="submit">
 										</label> </div>
-								</div> -->
+								</div>
 								<!--item-content-->
 								<label for="file1"> Upload a file</label>
-								<input type="file" id="file1" name="file">
+								<input type="file" id="file1" name="file" onclick="submitform()">
 								<small>Only accepts CSV files</small>
 								<button type="submit">Upload</button>
 							</div>
