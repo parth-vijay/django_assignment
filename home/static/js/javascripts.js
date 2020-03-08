@@ -35,5 +35,21 @@ $(document).ready(function(){
 		else{
 			$('.table-responsive table tbody tr th input').prop('checked', false)
 		}
-	})
+	});
+
+
+	// $('.draganddrop input').click(function(e){
+	// 	var form=$(this)
+	// 	console.log(form)
+	// 	console.log('kam kr raha ha fn')
+	// 	// e.preventDefault()
+	// 	// e.stopPropagation();
+	// 	$('.draganddrop input:nth-child(2)').submit()
+	// })
+	// 
 });
+function formsubmit(){
+	console.log('hello')
+	// .preventDefault()
+	$('.dragndrop form').submit();
+}
