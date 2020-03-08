@@ -4,6 +4,8 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.conf import settings
 import io
+from django.core.files.storage import default_storage
+import json
 # Create your models here.
 
 gender = (('Male', 'Male'), ('Female', 'Female'), ('Other', 'Other'))
@@ -31,20 +33,42 @@ class AreaKey(models.Model):
 	user=models.ForeignKey(User, on_delete=models.PROTECT)
 	file=models.FileField(null=True)
 	data=models.CharField(max_length=200, blank=True)
-	rowdata=models.CharField(max_length=300, blank=True)
+	rowdata=models.TextField(blank=True)
 	complete=models.BooleanField(default=False)
 
 	def __str__(self):
 		return self.file.name
 
-# @receiver(post_save, sender=AreaKey)
-# def areakeyfn(sender, instance, **kwargs):
-# 	filename=instance.file
-# 	path=settings.BASE_DIR + '/media/' + str(filename)
-# 	print(type(path))
-# 	# print(str(filename))
-# 	# fpath=path.encode('utf-8').strip()
-# 	# print(fpath)
-# 	f=io.open(path, 'r', encoding='utf-8')
-# 	content=f.read()
-# 	print(content)
+@receiver(post_save, sender=AreaKey)
+def areakeyfn(sender, instance, **kwargs):
+	filename=instance.file
+	path=settings.BASE_DIR + '/media/' + str(filename)
+	f=open(path, 'r')
+	content=f.read()
+	instance.data=content
+	d = instance.data.split('\n')
+	AreaKey.objects.filter(id=instance.id).update(data=d)
+	del d[0]
+	d.remove('')
+	a=[]
+	b=[]
+	for i in d:
+		x=i.split(',')
+		# print(x)
+		a={'cust_name':x[0]}
+		a.update({'order_num':x[1]})
+		a.update({'date':x[2]})
+		a.update({'post':x[3]})
+		b+=[a]
+
+		# print(a)
+
+	# print(b)
+	c=json.dumps(b)	
+	AreaKey.objects.filter(id=instance.id).update(rowdata=c)
+
+	# e=instance.rowdata
+	# e=c
+	# e.save()
+	# print(e)
+	f.close()
