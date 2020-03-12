@@ -36,11 +36,8 @@ def areakey(request):
 	rowda=AreaKey.objects.values('rowdata')
 	d=[]
 	for k in rowda:
-		# print(type(k))
 		d+=json.loads(k['rowdata'])
-		# d.append(rst)
-	print(d)
-	return render(request, 'areakey.html', {'form':form, 'rowda':rowda, 'd':d})
+	return render(request, 'areakey.html', {'form':form, 'd':d})
 
 def user_profile(request):
 	user=get_object_or_404(User, id=request.user.id)
