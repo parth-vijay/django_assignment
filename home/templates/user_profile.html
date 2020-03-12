@@ -1,9 +1,14 @@
 {% extends "index.html" %}{% load static %}
 {% block content %}
-	<div>
-		<h2>{{user.username}}</h2>
-		<h4>{{user.first_name}}</h4>
-		<h4>{{user.last_name}}</h4>
-		<h4>{{user.email}}</h4>
+	<div class="innersection">
+		<div class="areakeybtn" style="width: 100%; float: left; margin:  37px 0px;">
+			<a href="{% url 'home:areakey' %}" class="button areakeybutton">AreaKey Page</a>
+		</div>
+		<div class="userprofile">
+			<h2>{{user.username}}</h2>
+			<h4>First Name: {{user.first_name}}</h4>
+			<h4>Last Name: {{user.last_name}}</h4>
+			<h4>Email: {{user.email}}</h4>
+		</div>
 	</div>
 {% endblock%}
