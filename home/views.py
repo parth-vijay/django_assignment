@@ -7,6 +7,7 @@ from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from .forms import *
+import json
 
 @login_required(login_url='login/')
 def logout_request(request):
@@ -20,6 +21,7 @@ def product(request):
 	return render(request, 'product.html')
 
 def areakey(request):
+	rowd=[]
 	if request.method=='POST':
 		form=AreaKeyForm(request.POST, request.FILES)
 		if form.is_valid():
@@ -31,7 +33,14 @@ def areakey(request):
 			return redirect('home:home')
 	else:
 		form=AreaKeyForm()
-	return render(request, 'areakey.html', {'form':form})
+	rowda=AreaKey.objects.values('rowdata')
+	d=[]
+	for k in rowda:
+		# print(type(k))
+		d+=json.loads(k['rowdata'])
+		# d.append(rst)
+	print(d)
+	return render(request, 'areakey.html', {'form':form, 'rowda':rowda, 'd':d})
 
 def user_profile(request):
 	user=get_object_or_404(User, id=request.user.id)
