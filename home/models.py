@@ -32,7 +32,7 @@ class User(AbstractUser):
 class AreaKey(models.Model):
 	user=models.ForeignKey(User, on_delete=models.PROTECT)
 	file=models.FileField(null=True)
-	data=models.CharField(max_length=200, blank=True)
+	data=models.TextField(blank=True)
 	rowdata=models.TextField(blank=True)
 	complete=models.BooleanField(default=False)
 
