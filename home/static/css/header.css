@@ -56,6 +56,7 @@ a {
     padding: 7px 9px;
     border-bottom-right-radius: 100%;
     border-top-right-radius: 100%;
+    margin: -17px 13px;
 }
 .homebutton {
     position: relative;
@@ -378,7 +379,13 @@ h4 {
     width: 100%;
     float: left;
 }
-.areakeyupload button {
+.areakeyupload .areakeybtn {
+    background: #6c757d;
+    border-color: #6c757d;
+    border-radius: 0 27px 0 0;
+    line-height: 1.2;
+}
+.areakeyupload .areakeybtn {
     background: #6c757d;
     border-color: #6c757d;
     border-radius: 0 27px 0 0;
@@ -759,5 +766,28 @@ body p {
 .box__success,
 .box__error {
   display: none;
+}
+.areakeybtn {
+    float: left;
+    width: 100%;
+    margin-bottom: 37px;
+}
+.userprofile {
+    float: left;
+    width: 100%;
+}
+a.button.areakeybutton {
+    width: 11%;
+    float: left;
+}
+.areakeybtn a:hover {
+    background-color: blue;
+}
+
+.files button {
+    width: 100%;
+    padding: 6px 0px;
+    /* margin: 6px 0px; */
+    background: #dfdfe8;
 }
   /* End search button css*/
