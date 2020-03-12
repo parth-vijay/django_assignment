@@ -23,7 +23,7 @@ $(document).ready(function(){
 		$('.dragndrop .item form').show();
 
 	});
-	$('.table-responsive table tbody tr:nth-child(1) th input').click(function(){
+	$('.table-responsive table tbody tr input').click(function(){
 		console.log('hello');
 		$('.selectallbtn').toggle();
 	});
@@ -47,6 +47,7 @@ $(document).ready(function(){
 	// 	$('.draganddrop input:nth-child(2)').submit()
 	// })
 	// 
+	$('.file-upload').file_upload();
 });
 function formsubmit(){
 	console.log('hello')
