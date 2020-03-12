@@ -15,6 +15,7 @@
 	   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	   <link rel="stylesheet" type="text/css" href="{% get_static_prefix %}css/header.css" />
+	   <link rel="stylesheet" type="text/css" href="{% get_static_prefix %}css/drag&drop.css" />
 	</head>
 	<body>
 		<header>
@@ -37,7 +38,7 @@
 								<a href="{% url 'home:logout' %}">
 									<i class="newIconTradeArea"></i><span>logout</span>
 								</a><br>
-								<a href="#"><span>{{user.username}}</span></a>
+								<a href="{% url 'home:user_profile' %}"><span>{{user.username}}</span></a>
 							{% else %}
 							<a href="{% url 'home:login' %}">
 								<i class="newIconTradeArea"></i><span>Please Log In</span>
