@@ -36,8 +36,6 @@ $(document).ready(function(){
 			$('.table-responsive table tbody tr th input').prop('checked', false)
 		}
 	});
-
-
 	// $('.draganddrop input').click(function(e){
 	// 	var form=$(this)
 	// 	console.log(form)
@@ -47,10 +45,7 @@ $(document).ready(function(){
 	// 	$('.draganddrop input:nth-child(2)').submit()
 	// })
 	// 
-	$('.file-upload').file_upload();
+	$('#draganddropfm input').change(function(){
+		$('#draganddropfm').submit();
+	});
 });
-function formsubmit(){
-	console.log('hello')
-	// .preventDefault()
-	$('.dragndrop form').submit();
-}
