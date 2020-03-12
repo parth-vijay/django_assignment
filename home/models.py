@@ -54,21 +54,11 @@ def areakeyfn(sender, instance, **kwargs):
 	b=[]
 	for i in d:
 		x=i.split(',')
-		# print(x)
 		a={'cust_name':x[0]}
 		a.update({'order_num':x[1]})
 		a.update({'date':x[2]})
 		a.update({'post':x[3]})
 		b+=[a]
-
-		# print(a)
-
-	# print(b)
 	c=json.dumps(b)	
 	AreaKey.objects.filter(id=instance.id).update(rowdata=c)
-
-	# e=instance.rowdata
-	# e=c
-	# e.save()
-	# print(e)
 	f.close()
