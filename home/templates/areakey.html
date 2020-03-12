@@ -13,36 +13,20 @@
 				<p>WELCOME! - PLEASE NOTE: You are <strong>logged</strong> in to a <strong><i>confidential</i> privileged area</strong>. Information on these pages is for the exclusive viewing and use of your company and information such as net prices, and other confidential information herein must be kept confidential at all times.</p>
 			</div>
 			<div class="areakeyupload">
-				<button type="button" class="active btn btn-primary">Order Upload</button>
-				<button type="button" class="btn btn-secondary">Upload History</button>
-				<div class="dragndrop one">
-					<div class="item">
-						<form data-validation="true" method="POST" enctype="multipart/form-data">
-							{% csrf_token %}
-							<div class="item-inner">
-								<div class="item-content">
-									<div class="image-upload"> <label style="cursor: pointer;" for="file_upload"> <img src="" alt="" class="uploaded-image">
-											<div class="h-100">
-												<div class="dplay-tbl">
-													<div class="dplay-tbl-cell"><i class="fa fa-arrow-circle-down"></i>
-														<h5><b>Choose a file</b> or drag it here</h5>
-													</div>
-												</div>
-											</div>
-											 <input data-required="image" type="file" name="csvfile" id="file_upload" class="image-input" data-traget-resolution="image_resolution" value="" onclick="formsubmit()">
-											 <input type="submit">
-										</label> </div>
-								</div>
-								<!--item-content-->
-								<label for="file1"> Upload a file</label>
-								<input type="file" id="file1" name="file" onclick="submitform()">
-								<small>Only accepts CSV files</small>
+				<button type="button" class="active btn btn-primary areakeybtn">Order Upload</button>
+				<button type="button" class="btn btn-secondary areakeybtn">Upload History</button>
+				<div>
+					<div class="row">
+					  	<div class="col-md-12">
+						  	<form method="POST" action="#" id="#" enctype="multipart/form-data">
+						  		{% csrf_token %}
+							  <div class="form-group files">
+								<input type="file" class="form-control" multiple="" name="file">
 								<button type="submit">Upload</button>
-							</div>
-							<!--item-inner-->
-						</form>
+							  </div>
+						  	</form>
+					  	</div>
 					</div>
-					<!--item-->
 				</div>
 				<div class="search-container">
 					<form>
@@ -60,10 +44,10 @@
 										<label class="form-check-label" for="inlineCheckbox1">select All</label>
 									</div>
 								</th>
-									<th scope="col">Customer Name</th>
-									<th scope="col">Order Number</th>
-									<th scope="col">Order Date</th>
-									<th scope="col">Post Code</th>
+								<th scope="col">Customer Name</th>
+								<th scope="col">Order Number</th>
+								<th scope="col">Order Date</th>
+								<th scope="col">Post Code</th>
 							</tr>
 						</thead>
 						<tbody>
