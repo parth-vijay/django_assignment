@@ -20,6 +20,7 @@ def home(request):
 def product(request):
 	return render(request, 'product.html')
 
+@login_required
 def areakey(request):
 	rowd=[]
 	if request.method=='POST':
@@ -34,7 +35,6 @@ def areakey(request):
 	else:
 		form=AreaKeyForm()
 	rowda=AreaKey.objects.filter(user=request.user.id).values('rowdata')
-	print(rowda)
 	d=[]
 	for k in rowda:
 		d+=json.loads(k['rowdata'])
