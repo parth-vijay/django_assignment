@@ -33,7 +33,8 @@ def areakey(request):
 			return redirect('home:home')
 	else:
 		form=AreaKeyForm()
-	rowda=AreaKey.objects.values('rowdata')
+	rowda=AreaKey.objects.filter(user=request.user.id).values('rowdata')
+	print(rowda)
 	d=[]
 	for k in rowda:
 		d+=json.loads(k['rowdata'])
