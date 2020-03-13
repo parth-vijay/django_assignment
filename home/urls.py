@@ -11,6 +11,7 @@ urlpatterns=[
 	path('logout/', logout_request, name='logout'),
 	path('product/', product, name='product'),
 	path('areakey/', areakey, name='areakey'),
+	path('data/', table_data, name='table_data'),
 	# path('areakey_csv/', csv_file, name='csv_file'),
 	path('', home, name='home'),
 ]
