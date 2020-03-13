@@ -25,3 +25,5 @@ class CustomUserAdmin(UserAdmin):
 
 admin.site.register(User, CustomUserAdmin)
 admin.site.register(AreaKey)
+admin.site.register(Customer)
+admin.site.register(Order)
