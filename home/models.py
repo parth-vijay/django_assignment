@@ -29,6 +29,23 @@ class User(AbstractUser):
 	def __str__(self):
 		return str(self.username)
 
+class Customer(models.Model):
+	name=models.CharField(max_length=200, blank=True)
+	account=models.CharField(max_length=200, blank=True)
+	active=models.BooleanField(default=True)
+
+	def __str__(self):
+		return self.name
+
+class Order(models.Model):
+	order_no=models.IntegerField(blank=True)
+	customer_order=models.CharField(max_length=200, blank=True)
+	date=models.DateField(blank=True)
+	postcode=models.CharField(max_length=100, blank=True)
+
+	def __str__(self):
+		return self.customer_order
+
 class AreaKey(models.Model):
 	user=models.ForeignKey(User, on_delete=models.PROTECT)
 	file=models.FileField(null=True)
