@@ -51,7 +51,7 @@
 						</thead>
 						<tbody>
 							{% for value in d %}
-							<tr>
+							<tr id="{{ forloop.counter }}">
 								<th scope="row">
 									<div class="form-check form-check-inline">
 										<input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
@@ -66,17 +66,15 @@
 					</table>
 				</div>
 				<div class="selectallbtn">
-					<a href="" class="button showbutton">Export Selected to .CSV 
-						<i class="fa fa-arrow-down"></i></a>
+					<button type="button" class="showbutton">Export Selected to .CSV 
+						<i class="fa fa-arrow-down"></i></button>
 					<a href="" class="hiddenbutton" style="display: none;"></a>
 				</div>
 				<div class="selectallbtn">
-					<a href="" class="button deleteselect">Delete Selected
-						<i class="fa fa-trash-alt"></i>
-					</a>
+					<button type="button" class="deleteselect">Delete Selected<i class="fa fa-trash-o"></i></button>
 					<a href="" class="hidebutton" style="display: none;"></a>
 					<a href="" class="button confirmbutton">Confirm and Place Orders
-						<i class="fa fa-arrow-alt-right"></i>
+						<i class="fa fa-arrow-right"></i>
 					</a>
 				</div>
 				<div class="clear"></div>
