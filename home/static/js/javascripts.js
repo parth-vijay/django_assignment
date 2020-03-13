@@ -72,16 +72,21 @@ $(document).ready(function(){
 
 	$('.deleteselect').click(function(){
 		// console.log('hello delete')
-		var ids=[];
-		// var id=$('.table-responsive table tbody tr').has('input:checked').remove()
-		// console.log(id)
+		var select_row=[];
 		$('.table-responsive table tbody tr input:checked').each(function(){
-			if($(this).is(".checked")){
-				var tata=$('.table-responsive table tbody tr td').html();
-				console.log(tata)
-			}
+			var data=$(this).val()
+			console.log(data)
+			select_row.push(data)
 		});
-		// console.log(tata)
-
+		console.log(select_row)
+		$.ajax({
+			url: "/data/",
+			type: "POST",
+			data: {'id[]':select_row},
+			success:function(e)
+			{
+				console.log(e)
+			}
+		})
 	});
 });
