@@ -69,9 +69,12 @@ def areakeyfn(sender, instance, **kwargs):
 	d.remove('')
 	a=[]
 	b=[]
-	for i in d:
+	for index, i in enumerate(d):
 		x=i.split(',')
-		a={'cust_name':x[0]}
+		# print(x)
+		# a.append('id'=instance.id, 'cust_name'=x[0], 'order_num'=x[1], 'date'=x[2], 'post'=x[3])
+		a={'id':instance.id, 'row':index, 'cust_name':x[0]}
+		# print(a)
 		a.update({'order_num':x[1]})
 		a.update({'date':x[2]})
 		a.update({'post':x[3]})
