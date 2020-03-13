@@ -24,11 +24,14 @@ $(document).ready(function(){
 
 	});
 	$('.table-responsive table tbody tr input').click(function(){
-		console.log('hello');
-		$('.selectallbtn').toggle();
+		if(this.checked){
+			$('.selectallbtn').show();
+		}
+		else{
+			$('.selectallbtn').hide();
+		}
 	});
 	$('.table-responsive table thead tr th:nth-child(1) input').click(function(){
-		console.log('hi');
 		if(this.checked){
 			$('.table-responsive table tbody tr th input').prop('checked', true)
 		}
@@ -62,5 +65,23 @@ $(document).ready(function(){
 		else{
 			$('.notfound').show();
 		}
+	});
+	$('.showbutton').click(function(){
+
+	});
+
+	$('.deleteselect').click(function(){
+		// console.log('hello delete')
+		var ids=[];
+		// var id=$('.table-responsive table tbody tr').has('input:checked').remove()
+		// console.log(id)
+		$('.table-responsive table tbody tr input:checked').each(function(){
+			if($(this).is(".checked")){
+				var tata=$('.table-responsive table tbody tr td').html();
+				console.log(tata)
+			}
+		});
+		// console.log(tata)
+
 	});
 });
