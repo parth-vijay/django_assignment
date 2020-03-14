@@ -449,7 +449,7 @@ a.hidebutton {
     width: 48%;
     float: left;
 }
-a.confirmbutton {
+button.confirmationorder {
     width: 30%;
     float: right;
 }
