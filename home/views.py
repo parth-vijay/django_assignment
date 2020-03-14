@@ -9,6 +9,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 from .forms import *
 import json
+import datetime
 
 @login_required(login_url='login/')
 def logout_request(request):
@@ -77,4 +78,31 @@ def csv_export(request):
 			fid=json.loads(x['rowdata'])
 
 	return HttpResponse('csv_file')
+
+@csrf_exempt
+def place_order(request):
+	data=request.POST.getlist('order[]')
+	data.reverse()
+	for i in data:
+		b=[]
+		file_id=int(i.split('|')[0])
+		row_index=int(i.split('|')[1])
+		rdata=AreaKey.objects.get(pk=file_id)
+		rodata=json.loads(rdata.rowdata)
+		# print(rodata[row_index])
+		sel_r=rodata[row_index]
+		date=rodata[row_index]['date']
+		# print(date)
+		sd=datetime.datetime.strptime(date,"%d/%m/%Y").strftime("%Y-%m-%d")
+		# print(sd)
+		Order.objects.create(order_no=sel_r['order_num'], customer_order=sel_r['cust_name'], date=sd, postcode=sel_r['post'])
+		del rodata[row_index]
+		for index, u in enumerate(rodata):
+			row_ind={'row':index}
+			u.update(row_ind)
+			b+=[u]
+		strdata=json.dumps(b)
+		AreaKey.objects.filter(pk=file_id).update(rowdata=strdata)
+	return HttpResponse("Success!")
+
 # Create your views here
