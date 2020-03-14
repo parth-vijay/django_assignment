@@ -13,6 +13,6 @@ urlpatterns=[
 	path('areakey/', areakey, name='areakey'),
 	path('data/', table_data, name='table_data'),
 	path('export/', csv_export, name='csv_export'),
-	# path('areakey_csv/', csv_file, name='csv_file'),
+	path('order/', place_order, name='place_order'),
 	path('', home, name='home'),
 ]
