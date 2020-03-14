@@ -48,15 +48,33 @@ def user_profile(request):
 @csrf_exempt
 def table_data(request):
 	data=request.POST.getlist('id[]')
+	data.reverse()
 	for i in data:
-		d=int(i.split('|')[0])
-		j=int(i.split('|')[1])
-		# print(d)
-	print(type(d))
-	rdata=AreaKey.objects.filter(pk=d).values('rowdata')
-	# print(rdata)
-	i=[]
-	rodata=json.loads(str(rdata))
-	print(rodata)
+		b=[]
+		file_id=int(i.split('|')[0])
+		row_index=int(i.split('|')[1])
+		rdata=AreaKey.objects.get(pk=file_id)
+		rodata=json.loads(rdata.rowdata)
+		del rodata[row_index]
+		for index, u in enumerate(rodata):
+			row_ind={'row':index}
+			u.update(row_ind)
+			b+=[u]
+		strdata=json.dumps(b)
+		AreaKey.objects.filter(pk=file_id).update(rowdata=strdata)
 	return HttpResponse("Success!")
+
+@csrf_exempt
+def csv_export(request):
+	selet_row=[]
+	csv_data=request.POST.getlist('csv_file[]')
+	print(csv_data)
+	for data in csv_data:
+		# print(data)
+		ids=int(data.split('|')[0])
+		csv_data=AreaKey.objects.filter(pk=ids).values('rowdata')
+		for x in csv_data:
+			fid=json.loads(x['rowdata'])
+
+	return HttpResponse('csv_file')
 # Create your views here
