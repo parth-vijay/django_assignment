@@ -104,5 +104,24 @@ $(document).ready(function(){
 				console.log(e)
 			}
 		})
+	});
+	$('.confirmationorder').click(function(){
+		console.log('hello order')
+		var select_order=[];
+		$('.table-responsive table tbody tr input:checked').each(function(){
+			var or_data=$(this).val()
+			console.log(or_data)
+			select_order.push(or_data)
+		});
+		console.log(select_order)
+		$.ajax({
+			url: "/order/",
+			type: "POST",
+			data: {'order[]':select_order},
+			success:function(e)
+			{
+				console.log(e)
+			}
+		})
 	})
 });
