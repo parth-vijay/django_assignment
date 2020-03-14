@@ -66,9 +66,6 @@ $(document).ready(function(){
 			$('.notfound').show();
 		}
 	});
-	$('.showbutton').click(function(){
-
-	});
 
 	$('.deleteselect').click(function(){
 		// console.log('hello delete')
@@ -89,4 +86,23 @@ $(document).ready(function(){
 			}
 		})
 	});
+	$('.showbutton').click(function(){
+		console.log('hello csv')
+		var select_row=[];
+		$('.table-responsive table tbody tr input:checked').each(function(){
+			var data=$(this).val()
+			console.log(data)
+			select_row.push(data)
+		});
+		console.log(select_row)
+		$.ajax({
+			url: "/export/",
+			type: "POST",
+			data: {'csv_file[]':select_row},
+			success:function(e)
+			{
+				console.log(e)
+			}
+		})
+	})
 });
