@@ -38,6 +38,7 @@ class Customer(models.Model):
 		return self.name
 
 class Order(models.Model):
+	user=models.ForeignKey(User, on_delete=models.PROTECT)
 	order_no=models.IntegerField(blank=True)
 	customer_order=models.CharField(max_length=200, blank=True)
 	date=models.DateField(blank=True)
