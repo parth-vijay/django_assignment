@@ -4,7 +4,7 @@
 	<div class="areakeyinfo">
 		<div class="areakeyinner">
 			<div class="areasection">
-				<div class="arealeft"><img src="{% get_static_prefix%}images/areakey/rapidkey_logo.png" height="60"></div>
+				<div class="arealeft"><img src="{% get_static_prefix %}images/areakey/rapidkey_logo.png" height="60"></div>
 				<div class="arearight">
 					<a href="#" class="export rapidkeybtn" download="RapidKey Order Template.csv"> Export RapidKey<sup>&reg;</sup></a>
 				</div>
@@ -15,7 +15,48 @@
 			<div class="areakeyupload">
 				<button type="button" class="active btn btn-primary areakeybtn">Order Upload</button>
 				<button type="button" class="btn btn-secondary areakeybtn">Upload History</button>
-				<div>
+				<div class="orderhistory" style="display: none;">
+					<div class="search-container">
+						<form>
+						  <input type="text" placeholder="Search.." name="search" style="width: 400px; border: 1px solid #807c7c;">
+						  <button type="submit">Search</button>
+						</form>
+					</div>
+					<div class="table-responsive">
+						<table class="table">
+							<thead class="thead-dark">
+								<tr>
+									<!-- <th scope="col">
+										<div class="form-check form-check-inline">
+											<input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+											<label class="form-check-label" for="inlineCheckbox1">select All</label>
+										</div>
+									</th> -->
+									<th scope="col">Customer Name</th>
+									<th scope="col">Order Number</th>
+									<th scope="col">Order Date</th>
+									<th scope="col">Post Code</th>
+								</tr>
+							</thead>
+							<tbody>
+								{% for value in plc_odr %}
+								<tr id="{{ forloop.counter }}">
+									<!-- <th scope="row">
+										<div class="form-check form-check-inline">
+											<input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="{{value.id}}|{{value.row}}">
+										</div>
+									</th> -->
+									<td>{{value.customer_order}}</td>
+									<td>{{value.order_no}}</td>
+									<td>{{value.date}}</td>
+									<td>{{value.postcode}}</td>
+								</tr>
+								{% endfor %}
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="orderuploadbtn" style="display: none;">
 					<div class="row">
 					  	<div class="col-md-12">
 						  	<form method="POST" action="#" id="draganddropfm" enctype="multipart/form-data">
@@ -26,45 +67,45 @@
 						  	</form>
 					  	</div>
 					</div>
-				</div>
-				<div class="search-container">
-					<form>
-					  <input type="text" placeholder="Search.." name="search" style="width: 400px; border: 1px solid #807c7c;">
-					  <button type="submit">Search</button>
-					</form>
-				</div>
-				<div class="table-responsive">
-					<table class="table">
-						<thead class="thead-dark">
-							<tr>
-								<th scope="col">
-									<div class="form-check form-check-inline">
-										<input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-										<label class="form-check-label" for="inlineCheckbox1">select All</label>
-									</div>
-								</th>
-								<th scope="col">Customer Name</th>
-								<th scope="col">Order Number</th>
-								<th scope="col">Order Date</th>
-								<th scope="col">Post Code</th>
-							</tr>
-						</thead>
-						<tbody>
-							{% for value in d %}
-							<tr id="{{ forloop.counter }}">
-								<th scope="row">
-									<div class="form-check form-check-inline">
-										<input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="{{value.id}}|{{value.row}}">
-									</div>
-								</th>
-								<td>{{value.cust_name}}</td>
-								<td>{{value.order_num}}</td>
-								<td>{{value.date}}</td>
-								<td>{{value.post}}</td>
-							</tr>
-							{% endfor %}
-						</tbody>
-					</table>
+					<div class="search-container">
+						<form>
+						  <input type="text" placeholder="Search.." name="search" style="width: 400px; border: 1px solid #807c7c;">
+						  <button type="submit">Search</button>
+						</form>
+					</div>
+					<div class="table-responsive">
+						<table class="table">
+							<thead class="thead-dark">
+								<tr>
+									<th scope="col">
+										<div class="form-check form-check-inline">
+											<input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+											<label class="form-check-label" for="inlineCheckbox1">select All</label>
+										</div>
+									</th>
+									<th scope="col">Customer Name</th>
+									<th scope="col">Order Number</th>
+									<th scope="col">Order Date</th>
+									<th scope="col">Post Code</th>
+								</tr>
+							</thead>
+							<tbody>
+								{% for value in d %}
+								<tr id="{{ forloop.counter }}">
+									<th scope="row">
+										<div class="form-check form-check-inline">
+											<input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="{{value.id}}|{{value.row}}">
+										</div>
+									</th>
+									<td>{{value.cust_name}}</td>
+									<td>{{value.order_num}}</td>
+									<td>{{value.date}}</td>
+									<td>{{value.post}}</td>
+								</tr>
+								{% endfor %}
+							</tbody>
+						</table>
+					</div>
 				</div>
 				<div class="selectallbtn">
 					<button type="button" class="showbutton">Export Selected to .CSV 
@@ -80,7 +121,6 @@
 					<button type="button" class="confirmationorder">Confirm and Place Orders<i class="fa fa-arrow-right"></i></button>
 				</div>
 				<div class="clear"></div>
-
 			</div>
 		</div>
 	</div>
