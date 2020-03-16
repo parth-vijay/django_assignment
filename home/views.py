@@ -40,7 +40,10 @@ def areakey(request):
 	d=[]
 	for k in rowda:
 		d+=json.loads(k['rowdata'])
-	plc_odr=Order.objects.all()
+	# user=request.user
+	# print(user)
+	# plc_odr=Order.objects.all()
+	plc_odr=Order.objects.filter(user=request.user.id)
 	return render(request, 'areakey.html', {'form':form, 'd':d, 'plc_odr':plc_odr})
 
 def user_profile(request):
@@ -68,31 +71,38 @@ def table_data(request):
 
 @csrf_exempt
 def csv_export(request):
-	csv_data=request.POST.getlist('csv_file[]')
-	print(csv_data)
-	q=[]
-	for data in csv_data:
-		# print(data)
-		ids=int(data.split('|')[0])
-		# print(ids)
-		rid=int(data.split('|')[1])
-		csv_data=AreaKey.objects.get(pk=ids)
-		fid=json.loads(csv_data.rowdata)
-		# print(fid)
-		seled_row=fid[rid]
-		q+=[seled_row]
-	print(q)
-	response = HttpResponse(content_type='text/csv')
-	response['Content-Disposition'] = 'attachment; filename="areakey-template.csv"'
-	fieldnames = ['cust_name', 'order_num', 'date', 'post']
-	writer = csv.DictWriter(response, fieldnames=fieldnames)
-	writer.writeheader()
-	for o in q:
-		writer.writerow({'cust_name':o['cust_name'], 'order_num':o['order_num'], 'date':o['date'], 'post':o['post']})
-		# print(o)
-	return response
+	if request.method=='POST':
+		csv_data=request.POST.getlist('csv_file[]')
+		response = HttpResponse(content_type='text/csv')
+		response['Content-Disposition'] = 'attachment; filename="areakey-template.csv"'
+		fieldnames = ['cust_name', 'order_num', 'date', 'post']
+		writer = csv.DictWriter(response, fieldnames=fieldnames)
+		writer.writeheader()
+		# print(csv_data)
+		d= csv_data[0].split(',')
+		# print(d)
+		for data in d:
+			# print(data)
+			ids=int(data.split('|')[0])
+			# print(ids)
+			rid=int(data.split('|')[1])
+			csv_data=AreaKey.objects.get(pk=ids)
+			fid=json.loads(csv_data.rowdata)
+			seled_row=fid[rid]
+			print(seled_row)
+			# q+=[seled_row]
+		# print(q)
+		# response = HttpResponse(content_type='text/csv')
+		# response['Content-Disposition'] = 'attachment; filename="areakey-template.csv"'
+		# fieldnames = ['cust_name', 'order_num', 'date', 'post']
+		# writer = csv.DictWriter(response, fieldnames=fieldnames)
+		# writer.writeheader()
+		# for o in q:
+			writer.writerow({'cust_name':seled_row['cust_name'], 'order_num':seled_row['order_num'], 'date':seled_row['date'], 'post':seled_row['post']})
+			# print(o)
+		return response
 
-	return HttpResponse('csv_file')
+		return HttpResponse('csv_file')
 
 @csrf_exempt
 def place_order(request):
@@ -100,23 +110,22 @@ def place_order(request):
 	print(type(data))
 	data.reverse()
 	for i in data:
-		print(i)
-	# 	b=[]
-	# 	file_id=int(i.split('|')[0])
-	# 	row_index=int(i.split('|')[1])
-	# 	rdata=AreaKey.objects.get(pk=file_id)
-	# 	rodata=json.loads(rdata.rowdata)
-	# 	sel_r=rodata[row_index]
-	# 	date=rodata[row_index]['date']
-	# 	sd=datetime.datetime.strptime(date,"%d/%m/%Y").strftime("%Y-%m-%d")
-	# 	Order.objects.create(order_no=sel_r['order_num'], customer_order=sel_r['cust_name'], date=sd, postcode=sel_r['post'])
-	# 	del rodata[row_index]
-	# 	for index, u in enumerate(rodata):
-	# 		row_ind={'row':index}
-	# 		u.update(row_ind)
-	# 		b+=[u]
-	# 	strdata=json.dumps(b)
-	# 	AreaKey.objects.filter(pk=file_id).update(rowdata=strdata)
-	# return HttpResponse("Success!")
+		b=[]
+		file_id=int(i.split('|')[0])
+		row_index=int(i.split('|')[1])
+		rdata=AreaKey.objects.get(pk=file_id)
+		rodata=json.loads(rdata.rowdata)
+		sel_r=rodata[row_index]
+		date=rodata[row_index]['date']
+		sd=datetime.datetime.strptime(date,"%d/%m/%Y").strftime("%Y-%m-%d")
+		Order.objects.create(user=request.user, order_no=sel_r['order_num'], customer_order=sel_r['cust_name'], date=sd, postcode=sel_r['post'])
+		del rodata[row_index]
+		for index, u in enumerate(rodata):
+			row_ind={'row':index}
+			u.update(row_ind)
+			b+=[u]
+		strdata=json.dumps(b)
+		AreaKey.objects.filter(pk=file_id).update(rowdata=strdata)
+	return HttpResponse("Success!")
 
 # Create your views here
