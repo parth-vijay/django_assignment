@@ -1,6 +1,5 @@
 $(document).ready(function(){
-	$
-	$('.orderuploadbtn').show()
+	$('.orderhistory').hide()
 	$('.active').show();
 	if($('.active')){
 		$('.changeicon').removeClass('fa-plus').addClass('fa-minus')
@@ -25,7 +24,7 @@ $(document).ready(function(){
 		$('.dragndrop .item form').show();
 
 	});
-	$('.table-responsive table tbody tr input[type="checkbox"]').click(function(){
+	$('.orderuploadbtn table tbody tr input[type="checkbox"]').click(function(){
 		var inval=$(this);
 		// console.log(inval)
 		// $('.selectallbtn').show(this.checked)
@@ -51,13 +50,30 @@ $(document).ready(function(){
 		var le=$(this).length
 		console.log(le)
 		$('.orderhistory').show()
+		if(le > 0){
+			$('.orderuploadbtn').hide()
+			// $('.confirmationorder button').hide()
+		}
 	});
+	$('.orderhistory table tbody tr input').click(function(){
+		var inv=$(this).length
+		console.log(inv)
+		// $('.selectallbtn').show(this.checked)
+
+		if((this.checked)){
+			$('.selectallbtn button:nth-child(1)').show();
+			// $('.selectallbtn .deleteselect').show()
+		}
+	})
 	$('.areakeyupload button:nth-child(1)').click(function(e){
 	// 	var form=$(this)
 		// console.log('hello order button')
 		var le=$(this).length
 		// console.log(le)
 		$('.orderuploadbtn').show()
+		if(le > 0){
+			$('.orderhistory').hide()
+		}
 	});
 
 	// 
@@ -81,7 +97,6 @@ $(document).ready(function(){
 	});
 
 	$('.deleteselect').click(function(){
-		// console.log('hello delete')
 		var select_row=[];
 		$('.table-responsive table tbody tr input:checked').each(function(){
 			var data=$(this).val()
@@ -110,8 +125,6 @@ $(document).ready(function(){
 		console.log(select_row)
 		e.preventDefault()
 		var form=$('<form action="/export/" method="POST"></form>').append('<input name="csv_file[]" value="'+select_row+'" />')
-		// console.log(form)
-		// form.append()
 		form.appendTo($('body')).submit()
 		// $.ajax({
 		// 	url: "/export/",
@@ -123,15 +136,6 @@ $(document).ready(function(){
 		// 	}
 		// })
 	});
-	// $('.showbutton').click(function(e){
-	// 	$('.table-responsive table tbody tr input:checked').each(function(){
-	// 		var da=$(this).val()
-	// 		console.log(da)
-
-	// 		var g=$('.areakeyinner form input').attr('value',da)
-	// 		console.log(g)
-	// 	});
-	// })
 	$('.confirmationorder').click(function(){
 		// console.log('hello order')
 		var select_order=[];
