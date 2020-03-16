@@ -1,4 +1,6 @@
 $(document).ready(function(){
+	$
+	$('.orderuploadbtn').show()
 	$('.active').show();
 	if($('.active')){
 		$('.changeicon').removeClass('fa-plus').addClass('fa-minus')
@@ -23,8 +25,12 @@ $(document).ready(function(){
 		$('.dragndrop .item form').show();
 
 	});
-	$('.table-responsive table tbody tr input').click(function(){
-		if(this.checked){
+	$('.table-responsive table tbody tr input[type="checkbox"]').click(function(){
+		var inval=$(this);
+		console.log(inval)
+		// $('.selectallbtn').show(this.checked)
+
+		if(inval.filter('[type="checkbox"]').is(':checked')){
 			$('.selectallbtn').show();
 		}
 		else{
@@ -39,14 +45,21 @@ $(document).ready(function(){
 			$('.table-responsive table tbody tr th input').prop('checked', false)
 		}
 	});
-	// $('.draganddrop input').click(function(e){
+	$('.areakeyupload button:nth-child(2)').click(function(e){
 	// 	var form=$(this)
-	// 	console.log(form)
-	// 	console.log('kam kr raha ha fn')
-	// 	// e.preventDefault()
-	// 	// e.stopPropagation();
-	// 	$('.draganddrop input:nth-child(2)').submit()
-	// })
+		console.log('hello upload button')
+		var le=$(this).length
+		console.log(le)
+		$('.orderhistory').show()
+	});
+	$('.areakeyupload button:nth-child(1)').click(function(e){
+	// 	var form=$(this)
+		console.log('hello order button')
+		var le=$(this).length
+		console.log(le)
+		$('.orderuploadbtn').show()
+	});
+
 	// 
 	$('#draganddropfm input').change(function(){
 		$('#draganddropfm').submit();
@@ -86,7 +99,7 @@ $(document).ready(function(){
 			}
 		})
 	});
-	$('.showbutton').click(function(){
+	$('.showbutton').click(function(e){
 		console.log('hello csv')
 		var select_row=[];
 		$('.table-responsive table tbody tr input:checked').each(function(){
@@ -95,15 +108,19 @@ $(document).ready(function(){
 			select_row.push(data)
 		});
 		console.log(select_row)
-		$.ajax({
-			url: "/export/",
-			type: "POST",
-			data: {'csv_file[]':select_row},
-			success:function(e)
-			{
-				console.log(e)
-			}
-		})
+		e.preventDefault()
+		var form=$('<form action="/export/" method="POST"><input name="csv_file[]" value="'+select_row+'" /></form>')
+		// form.append()
+		form.appendTo($('body')).submit()
+		// $.ajax({
+		// 	url: "/export/",
+		// 	type: "POST",
+		// 	data: {'csv_file[]':select_row},
+		// 	success:function(e)
+		// 	{
+		// 		console.log(e)
+		// 	}
+		// })
 	});
 	$('.confirmationorder').click(function(){
 		console.log('hello order')
