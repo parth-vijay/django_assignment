@@ -3,7 +3,7 @@ from django.contrib.auth import logout, authenticate
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from .models import *
-import csv, io
+import csv
 from django.contrib import messages
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
@@ -40,7 +40,8 @@ def areakey(request):
 	d=[]
 	for k in rowda:
 		d+=json.loads(k['rowdata'])
-	return render(request, 'areakey.html', {'form':form, 'd':d})
+	plc_odr=Order.objects.all()
+	return render(request, 'areakey.html', {'form':form, 'd':d, 'plc_odr':plc_odr})
 
 def user_profile(request):
 	user=get_object_or_404(User, id=request.user.id)
@@ -67,42 +68,55 @@ def table_data(request):
 
 @csrf_exempt
 def csv_export(request):
-	selet_row=[]
 	csv_data=request.POST.getlist('csv_file[]')
 	print(csv_data)
+	q=[]
 	for data in csv_data:
 		# print(data)
 		ids=int(data.split('|')[0])
-		csv_data=AreaKey.objects.filter(pk=ids).values('rowdata')
-		for x in csv_data:
-			fid=json.loads(x['rowdata'])
+		# print(ids)
+		rid=int(data.split('|')[1])
+		csv_data=AreaKey.objects.get(pk=ids)
+		fid=json.loads(csv_data.rowdata)
+		# print(fid)
+		seled_row=fid[rid]
+		q+=[seled_row]
+	print(q)
+	response = HttpResponse(content_type='text/csv')
+	response['Content-Disposition'] = 'attachment; filename="areakey-template.csv"'
+	fieldnames = ['cust_name', 'order_num', 'date', 'post']
+	writer = csv.DictWriter(response, fieldnames=fieldnames)
+	writer.writeheader()
+	for o in q:
+		writer.writerow({'cust_name':o['cust_name'], 'order_num':o['order_num'], 'date':o['date'], 'post':o['post']})
+		# print(o)
+	return response
 
 	return HttpResponse('csv_file')
 
 @csrf_exempt
 def place_order(request):
 	data=request.POST.getlist('order[]')
+	print(type(data))
 	data.reverse()
 	for i in data:
-		b=[]
-		file_id=int(i.split('|')[0])
-		row_index=int(i.split('|')[1])
-		rdata=AreaKey.objects.get(pk=file_id)
-		rodata=json.loads(rdata.rowdata)
-		# print(rodata[row_index])
-		sel_r=rodata[row_index]
-		date=rodata[row_index]['date']
-		# print(date)
-		sd=datetime.datetime.strptime(date,"%d/%m/%Y").strftime("%Y-%m-%d")
-		# print(sd)
-		Order.objects.create(order_no=sel_r['order_num'], customer_order=sel_r['cust_name'], date=sd, postcode=sel_r['post'])
-		del rodata[row_index]
-		for index, u in enumerate(rodata):
-			row_ind={'row':index}
-			u.update(row_ind)
-			b+=[u]
-		strdata=json.dumps(b)
-		AreaKey.objects.filter(pk=file_id).update(rowdata=strdata)
-	return HttpResponse("Success!")
+		print(i)
+	# 	b=[]
+	# 	file_id=int(i.split('|')[0])
+	# 	row_index=int(i.split('|')[1])
+	# 	rdata=AreaKey.objects.get(pk=file_id)
+	# 	rodata=json.loads(rdata.rowdata)
+	# 	sel_r=rodata[row_index]
+	# 	date=rodata[row_index]['date']
+	# 	sd=datetime.datetime.strptime(date,"%d/%m/%Y").strftime("%Y-%m-%d")
+	# 	Order.objects.create(order_no=sel_r['order_num'], customer_order=sel_r['cust_name'], date=sd, postcode=sel_r['post'])
+	# 	del rodata[row_index]
+	# 	for index, u in enumerate(rodata):
+	# 		row_ind={'row':index}
+	# 		u.update(row_ind)
+	# 		b+=[u]
+	# 	strdata=json.dumps(b)
+	# 	AreaKey.objects.filter(pk=file_id).update(rowdata=strdata)
+	# return HttpResponse("Success!")
 
 # Create your views here
