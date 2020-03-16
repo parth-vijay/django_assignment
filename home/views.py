@@ -40,9 +40,6 @@ def areakey(request):
 	d=[]
 	for k in rowda:
 		d+=json.loads(k['rowdata'])
-	# user=request.user
-	# print(user)
-	# plc_odr=Order.objects.all()
 	plc_odr=Order.objects.filter(user=request.user.id)
 	return render(request, 'areakey.html', {'form':form, 'd':d, 'plc_odr':plc_odr})
 
@@ -78,28 +75,15 @@ def csv_export(request):
 		fieldnames = ['cust_name', 'order_num', 'date', 'post']
 		writer = csv.DictWriter(response, fieldnames=fieldnames)
 		writer.writeheader()
-		# print(csv_data)
 		d= csv_data[0].split(',')
-		# print(d)
 		for data in d:
-			# print(data)
 			ids=int(data.split('|')[0])
-			# print(ids)
 			rid=int(data.split('|')[1])
 			csv_data=AreaKey.objects.get(pk=ids)
 			fid=json.loads(csv_data.rowdata)
 			seled_row=fid[rid]
 			print(seled_row)
-			# q+=[seled_row]
-		# print(q)
-		# response = HttpResponse(content_type='text/csv')
-		# response['Content-Disposition'] = 'attachment; filename="areakey-template.csv"'
-		# fieldnames = ['cust_name', 'order_num', 'date', 'post']
-		# writer = csv.DictWriter(response, fieldnames=fieldnames)
-		# writer.writeheader()
-		# for o in q:
 			writer.writerow({'cust_name':seled_row['cust_name'], 'order_num':seled_row['order_num'], 'date':seled_row['date'], 'post':seled_row['post']})
-			# print(o)
 		return response
 
 		return HttpResponse('csv_file')
