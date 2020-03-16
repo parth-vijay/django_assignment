@@ -27,7 +27,7 @@ $(document).ready(function(){
 	});
 	$('.table-responsive table tbody tr input[type="checkbox"]').click(function(){
 		var inval=$(this);
-		console.log(inval)
+		// console.log(inval)
 		// $('.selectallbtn').show(this.checked)
 
 		if(inval.filter('[type="checkbox"]').is(':checked')){
@@ -54,9 +54,9 @@ $(document).ready(function(){
 	});
 	$('.areakeyupload button:nth-child(1)').click(function(e){
 	// 	var form=$(this)
-		console.log('hello order button')
+		// console.log('hello order button')
 		var le=$(this).length
-		console.log(le)
+		// console.log(le)
 		$('.orderuploadbtn').show()
 	});
 
@@ -109,7 +109,8 @@ $(document).ready(function(){
 		});
 		console.log(select_row)
 		e.preventDefault()
-		var form=$('<form action="/export/" method="POST"><input name="csv_file[]" value="'+select_row+'" /></form>')
+		var form=$('<form action="/export/" method="POST"></form>').append('<input name="csv_file[]" value="'+select_row+'" />')
+		// console.log(form)
 		// form.append()
 		form.appendTo($('body')).submit()
 		// $.ajax({
@@ -122,8 +123,17 @@ $(document).ready(function(){
 		// 	}
 		// })
 	});
+	// $('.showbutton').click(function(e){
+	// 	$('.table-responsive table tbody tr input:checked').each(function(){
+	// 		var da=$(this).val()
+	// 		console.log(da)
+
+	// 		var g=$('.areakeyinner form input').attr('value',da)
+	// 		console.log(g)
+	// 	});
+	// })
 	$('.confirmationorder').click(function(){
-		console.log('hello order')
+		// console.log('hello order')
 		var select_order=[];
 		$('.table-responsive table tbody tr input:checked').each(function(){
 			var or_data=$(this).val()
