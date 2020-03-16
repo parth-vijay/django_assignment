@@ -441,9 +441,13 @@ button.button.showbutton {
     width: 26%;
     float: left;
 }
-button.button.deleteselect {
+button.deleteselect {
     width: 20%;
     float: left;
+}
+i.fa.fa-arrow-right {
+    padding: 0px 16px;
+    /*margin: 5px 0;*/
 }
 a.hidebutton {
     width: 48%;
