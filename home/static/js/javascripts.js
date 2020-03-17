@@ -25,11 +25,13 @@ $(document).ready(function(){
 
 	});
 	$('.orderuploadbtn table tbody tr input[type="checkbox"]').click(function(){
-		var inval=$(this);
+		var inval= $('.areakeycheckbox:checked').length
+		// console.log(inval)
+		// var inval=$(this).length;
 		// console.log(inval)
 		// $('.selectallbtn').show(this.checked)
 
-		if(inval.filter('[type="checkbox"]').is(':checked')){
+		if(inval>0){
 			$('.selectallbtn').show();
 		}
 		else{
@@ -45,31 +47,22 @@ $(document).ready(function(){
 		}
 	});
 	$('.areakeyupload button:nth-child(2)').click(function(e){
-	// 	var form=$(this)
-		console.log('hello upload button')
 		var le=$(this).length
-		console.log(le)
 		$('.orderhistory').show()
 		if(le > 0){
 			$('.orderuploadbtn').hide()
-			// $('.confirmationorder button').hide()
 		}
 	});
-	$('.orderhistory table tbody tr input').click(function(){
-		var inv=$(this).length
-		console.log(inv)
-		// $('.selectallbtn').show(this.checked)
-
-		if((this.checked)){
-			$('.selectallbtn button:nth-child(1)').show();
-			// $('.selectallbtn .deleteselect').show()
-		}
-	})
+	// $('.orderhistory table tbody tr input').click(function(){
+	// 	var inv=$(this).length
+	// 	console.log(inv)
+	// 	if((this.checked)){
+	// 		$('.selectallbtn button:nth-child(1)').show();
+	// 		// $('.selectallbtn .deleteselect').show()
+	// 	}
+	// })
 	$('.areakeyupload button:nth-child(1)').click(function(e){
-	// 	var form=$(this)
-		// console.log('hello order button')
 		var le=$(this).length
-		// console.log(le)
 		$('.orderuploadbtn').show()
 		if(le > 0){
 			$('.orderhistory').hide()
@@ -85,7 +78,6 @@ $(document).ready(function(){
 		console.log(searchtext)
 		$('.table-responsive table tbody tr').hide()
 		var tlen=$('.table-responsive table tbody tr:not(.notfound) td:contains("'+searchtext+'")').length
-		console.log(tlen)
 		if( tlen > 0 ){
 			$('.table-responsive table tbody tr:not(.notfound) td:contains("'+searchtext+'")').each(function(){
 				$(this).closest('tr').show();
@@ -113,16 +105,15 @@ $(document).ready(function(){
 				console.log(e)
 			}
 		})
+		window.location.reload();
 	});
 	$('.showbutton').click(function(e){
 		console.log('hello csv')
 		var select_row=[];
 		$('.table-responsive table tbody tr input:checked').each(function(){
 			var data=$(this).val()
-			console.log(data)
 			select_row.push(data)
 		});
-		console.log(select_row)
 		e.preventDefault()
 		var form=$('<form action="/export/" method="POST"></form>').append('<input name="csv_file[]" value="'+select_row+'" />')
 		form.appendTo($('body')).submit()
@@ -141,10 +132,8 @@ $(document).ready(function(){
 		var select_order=[];
 		$('.table-responsive table tbody tr input:checked').each(function(){
 			var or_data=$(this).val()
-			console.log(or_data)
 			select_order.push(or_data)
 		});
-		console.log(select_order)
 		$.ajax({
 			url: "/order/",
 			type: "POST",
@@ -154,5 +143,6 @@ $(document).ready(function(){
 				console.log(e)
 			}
 		})
+		window.location.reload();
 	})
 });
