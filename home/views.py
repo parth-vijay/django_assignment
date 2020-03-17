@@ -112,4 +112,7 @@ def place_order(request):
 		AreaKey.objects.filter(pk=file_id).update(rowdata=strdata)
 	return HttpResponse("Success!")
 
+
+def map_view(request):
+	return render(request, 'map.html')
 # Create your views here
