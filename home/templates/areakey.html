@@ -22,16 +22,19 @@
 						  <button type="submit">Search</button>
 						</form>
 					</div>
+					<a href="{% url 'home:map_view' %}" class="button confirmbutton">Map
+						<!-- <i class="fa fa-arrow-right"></i> -->
+					</a>
 					<div class="table-responsive">
 						<table class="table">
 							<thead class="thead-dark">
 								<tr>
-									<th scope="col">
+									<!-- <th scope="col">
 										<div class="form-check form-check-inline">
 											<input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
 											<label class="form-check-label" for="inlineCheckbox1">select All</label>
 										</div>
-									</th>
+									</th> -->
 									<th scope="col">Customer Name</th>
 									<th scope="col">Order Number</th>
 									<th scope="col">Order Date</th>
@@ -41,11 +44,11 @@
 							<tbody>
 								{% for value in plc_odr %}
 								<tr id="{{ forloop.counter }}">
-									<th scope="row">
+									<!-- <th scope="row">
 										<div class="form-check form-check-inline">
 											<input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="{{value.id}}|{{value.row}}">
 										</div>
-									</th>
+									</th> -->
 									<td>{{value.customer_order}}</td>
 									<td>{{value.order_no}}</td>
 									<td>{{value.date}}</td>
@@ -94,7 +97,7 @@
 								<tr id="{{ forloop.counter }}">
 									<th scope="row">
 										<div class="form-check form-check-inline">
-											<input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="{{value.id}}|{{value.row}}">
+											<input class="form-check-input areakeycheckbox" type="checkbox" id="inlineCheckbox1" value="{{value.id}}|{{value.row}}">
 										</div>
 									</th>
 									<td>{{value.cust_name}}</td>
