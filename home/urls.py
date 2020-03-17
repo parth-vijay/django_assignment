@@ -14,5 +14,6 @@ urlpatterns=[
 	path('data/', table_data, name='table_data'),
 	path('export/', csv_export, name='csv_export'),
 	path('order/', place_order, name='place_order'),
+	path('map/', map_view, name='map_view'),
 	path('', home, name='home'),
 ]
