@@ -2,6 +2,9 @@
 {% block content %}
 	<div class="formsection">
 		<div class="loginform">
+			{% if form.errors %}
+			    <p style="font-size: 2em; color: black;">username or password not correct</p>
+			{% endif %}
 			<form action="/login/" method="POST">
 				{% csrf_token %}
 				<div class="form-group">
