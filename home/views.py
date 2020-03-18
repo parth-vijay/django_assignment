@@ -47,6 +47,7 @@ def user_profile(request):
 	user=get_object_or_404(User, id=request.user.id)
 	return render(request, 'user_profile.html', {'user':user})
 
+@login_required
 @csrf_exempt
 def table_data(request):
 	data=request.POST.getlist('id[]')
@@ -66,6 +67,7 @@ def table_data(request):
 		AreaKey.objects.filter(pk=file_id).update(rowdata=strdata)
 	return HttpResponse("Success!")
 
+@login_required
 @csrf_exempt
 def csv_export(request):
 	if request.method=='POST':
@@ -88,6 +90,7 @@ def csv_export(request):
 
 		return HttpResponse('csv_file')
 
+@login_required
 @csrf_exempt
 def place_order(request):
 	data=request.POST.getlist('order[]')
