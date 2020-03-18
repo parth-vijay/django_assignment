@@ -73,4 +73,12 @@
     padding-left: 10px;
   }
 
+/* start areakeyupload button a css*/
+
+.areakeyupload a:hover {
+    text-decoration: none;
+    color: orange;
+};
+
+/* end areakeyupload button a css*/
   /* End 
