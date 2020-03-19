@@ -1,128 +1,138 @@
 {% extends "index.html" %}{% load static %}
 {% block content %}
 <section>
-	<div class="areakeyinfo">
-		<div class="areakeyinner">
-			<div class="areasection">
-				<div class="arealeft"><img src="{% get_static_prefix %}images/areakey/rapidkey_logo.png" height="60"></div>
-				<div class="arearight">
-					<a href="#" class="export rapidkeybtn" download="RapidKey Order Template.csv"> Export RapidKey<sup>&reg;</sup></a>
+	<div class="navigationbar">
+		<div class="menuleft">
+			<div class="menuproduct">
+				<h3>AreaKey</h3>
+				<div class="productmenulist">
+					<h4 class="firstmenu"><a href="{% url 'home:areakey' %}">AreaKey<sup>&reg;</sup> Download/Upload Area</a></h4>
+					<h4 class="firstmenu"><a href="{% url 'home:map_view' %}">AreaKey<sup>&reg;</sup> Map Results Viewer</a></i></h4>
 				</div>
 			</div>
-			<div class="areacontent">
-				<p>WELCOME! - PLEASE NOTE: You are <strong>logged</strong> in to a <strong><i>confidential</i> privileged area</strong>. Information on these pages is for the exclusive viewing and use of your company and information such as net prices, and other confidential information herein must be kept confidential at all times.</p>
-			</div>
-			<div class="areakeyupload">
-				<button type="button" class="active btn btn-primary areakeybtn">Order Upload</button>
-				<button type="button" class="btn btn-secondary areakeybtn">Upload History</button>
-				<button type="button" class="btn btn-secondary areakeybtn"><a href="{% url 'home:map_view' %}">Post Code Map</a></button>
-				<div class="orderhistory">
-					<div class="search-container">
-						<form method="GET" action="{% url 'home:areakey' %}">
-						  	Start Date: <input type="date" id="startDate" name="startdate" width="400px" value="{{startdate}}" />
-							End Date: <input type="date" id="endDate" name="enddate" width="400px" value="{{enddate}}" />
-							<button type="submit">Search</button>
-						</form>
-					</div>
-					<div class="table-responsive">
-						<table class="table">
-							<thead class="thead-dark">
-								<tr>
-									<!-- <th scope="col">
-										<div class="form-check form-check-inline">
-											<input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-											<label class="form-check-label" for="inlineCheckbox1">select All</label>
-										</div>
-									</th> -->
-									<th scope="col">Customer Name</th>
-									<th scope="col">Order Number</th>
-									<th scope="col">Order Date</th>
-									<th scope="col">Post Code</th>
-								</tr>
-							</thead>
-							<tbody>
-								{% for value in plc_odr %}
-								<tr id="{{ forloop.counter }}">
-									<!-- <th scope="row">
-										<div class="form-check form-check-inline">
-											<input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="{{value.id}}|{{value.row}}">
-										</div>
-									</th> -->
-									<td>{{value.customer_order}}</td>
-									<td>{{value.order_no}}</td>
-									<td>{{value.date}}</td>
-									<td>{{value.postcode}}</td>
-								</tr>
-								{% endfor %}
-							</tbody>
-						</table>
+		</div>
+		<div class="areakeyinfo">
+			<div class="areakeyinner">
+				<div class="areasection">
+					<div class="arealeft"><img src="{% get_static_prefix %}images/areakey/rapidkey_logo.png" height="60"></div>
+					<div class="arearight">
+						<a href="#" class="export rapidkeybtn" download="RapidKey Order Template.csv"> Export RapidKey<sup>&reg;</sup></a>
 					</div>
 				</div>
-				<div class="orderuploadbtn">
-					<div class="row">
-						<div class="col-md-12">
-							<form method="POST" action="#" id="draganddropfm" enctype="multipart/form-data">
-								{% csrf_token %}
-							  <div class="form-group files">
-								<input type="file" class="form-control" multiple="" name="file">
-							  </div>
+				<div class="areacontent">
+					<p>WELCOME! - PLEASE NOTE: You are <strong>logged</strong> in to a <strong><i>confidential</i> privileged area</strong>. Information on these pages is for the exclusive viewing and use of your company and information such as net prices, and other confidential information herein must be kept confidential at all times.</p>
+				</div>
+				<div class="areakeyupload">
+					<button type="button" class="active btn btn-primary areakeybtn">Order Upload</button>
+					<button type="button" class="btn btn-secondary areakeybtn">Upload History</button>
+					<div class="orderhistory">
+						<div class="search-container">
+							<form method="GET" action="{% url 'home:areakey' %}">
+							  	Start Date: <input type="date" id="startDate" name="startdate" width="400px" value="{{startdate}}" />
+								End Date: <input type="date" id="endDate" name="enddate" width="400px" value="{{enddate}}" />
+								<button type="submit">Search</button>
 							</form>
 						</div>
+						<div class="table-responsive">
+							<table class="table">
+								<thead class="thead-dark">
+									<tr>
+										<!-- <th scope="col">
+											<div class="form-check form-check-inline">
+												<input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+												<label class="form-check-label" for="inlineCheckbox1">select All</label>
+											</div>
+										</th> -->
+										<th scope="col">Customer Name</th>
+										<th scope="col">Order Number</th>
+										<th scope="col">Order Date</th>
+										<th scope="col">Delivery Postcode</th>
+									</tr>
+								</thead>
+								<tbody>
+									{% for value in plc_odr %}
+									<tr id="{{ forloop.counter }}">
+										<!-- <th scope="row">
+											<div class="form-check form-check-inline">
+												<input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="{{value.id}}|{{value.row}}">
+											</div>
+										</th> -->
+										<td>{{value.customer_order}}</td>
+										<td>{{value.order_no}}</td>
+										<td>{{value.date}}</td>
+										<td>{{value.postcode}}</td>
+									</tr>
+									{% endfor %}
+								</tbody>
+							</table>
+						</div>
 					</div>
-					<div class="search-container">
-						<form>
-						  <input type="text" placeholder="Search.." name="search" style="width: 400px; border: 1px solid #807c7c;">
-						  <button type="submit">Search</button>
-						</form>
+					<div class="orderuploadbtn">
+						<div class="row">
+							<div class="col-md-12">
+								<form method="POST" action="#" id="draganddropfm" enctype="multipart/form-data">
+									{% csrf_token %}
+								  <div class="form-group files">
+									<input type="file" class="form-control" multiple="" name="file">
+								  </div>
+								</form>
+							</div>
+						</div>
+						<div class="search-container">
+							<form>
+							  <input type="text" placeholder="Search.." name="search" style="width: 400px; border: 1px solid #807c7c;">
+							  <button type="submit">Search</button>
+							</form>
+						</div>
+						<div class="table-responsive">
+							<table class="table">
+								<thead class="thead-dark">
+									<tr>
+										<th scope="col">
+											<div class="form-check form-check-inline">
+												<input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+												<label class="form-check-label" for="inlineCheckbox1">select All</label>
+											</div>
+										</th>
+										<th scope="col">Customer Name</th>
+										<th scope="col">Order Number</th>
+										<th scope="col">Order Date</th>
+										<th scope="col">Delivery Postcode</th>
+									</tr>
+								</thead>
+								<tbody>
+									{% for value in d %}
+									<tr id="{{ forloop.counter }}">
+										<th scope="row">
+											<div class="form-check form-check-inline">
+												<input class="form-check-input areakeycheckbox" type="checkbox" id="inlineCheckbox1" value="{{value.id}}|{{value.row}}">
+											</div>
+										</th>
+										<td>{{value.cust_name}}</td>
+										<td>{{value.order_num}}</td>
+										<td>{{value.date}}</td>
+										<td>{{value.post}}</td>
+									</tr>
+									{% endfor %}
+								</tbody>
+							</table>
+						</div>
 					</div>
-					<div class="table-responsive">
-						<table class="table">
-							<thead class="thead-dark">
-								<tr>
-									<th scope="col">
-										<div class="form-check form-check-inline">
-											<input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-											<label class="form-check-label" for="inlineCheckbox1">select All</label>
-										</div>
-									</th>
-									<th scope="col">Customer Name</th>
-									<th scope="col">Order Number</th>
-									<th scope="col">Order Date</th>
-									<th scope="col">Post Code</th>
-								</tr>
-							</thead>
-							<tbody>
-								{% for value in d %}
-								<tr id="{{ forloop.counter }}">
-									<th scope="row">
-										<div class="form-check form-check-inline">
-											<input class="form-check-input areakeycheckbox" type="checkbox" id="inlineCheckbox1" value="{{value.id}}|{{value.row}}">
-										</div>
-									</th>
-									<td>{{value.cust_name}}</td>
-									<td>{{value.order_num}}</td>
-									<td>{{value.date}}</td>
-									<td>{{value.post}}</td>
-								</tr>
-								{% endfor %}
-							</tbody>
-						</table>
+					<div class="selectallbtn">
+						<button type="button" class="showbutton">Export Selected to .CSV 
+							<i class="fa fa-arrow-down"></i></button>
+						<a href="" class="hiddenbutton" style="display: none;"></a>
 					</div>
+					<div class="selectallbtn">
+						<button type="button" class="deleteselect">Delete Selected<i class="fa fa-trash-o"></i></button>
+						<a href="" class="hidebutton" style="display: none;"></a>
+						<!-- <a href="" class="button confirmbutton">Confirm and Place Orders
+							<i class="fa fa-arrow-right"></i>
+						</a> -->
+						<button type="button" class="confirmationorder">Upload Selected Rows<i class="fa fa-arrow-right"></i></button>
+					</div>
+					<div class="clear"></div>
 				</div>
-				<div class="selectallbtn">
-					<button type="button" class="showbutton">Export Selected to .CSV 
-						<i class="fa fa-arrow-down"></i></button>
-					<a href="" class="hiddenbutton" style="display: none;"></a>
-				</div>
-				<div class="selectallbtn">
-					<button type="button" class="deleteselect">Delete Selected<i class="fa fa-trash-o"></i></button>
-					<a href="" class="hidebutton" style="display: none;"></a>
-					<!-- <a href="" class="button confirmbutton">Confirm and Place Orders
-						<i class="fa fa-arrow-right"></i>
-					</a> -->
-					<button type="button" class="confirmationorder">Confirm and Place Orders<i class="fa fa-arrow-right"></i></button>
-				</div>
-				<div class="clear"></div>
 			</div>
 		</div>
 	</div>
