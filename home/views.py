@@ -10,6 +10,8 @@ from django.urls import reverse
 from .forms import *
 import json
 import datetime
+from django.contrib import messages
+
 
 @login_required(login_url='login/')
 def logout_request(request):
@@ -24,7 +26,6 @@ def product(request):
 
 @login_required
 def areakey(request):
-	rowd=[]
 	if request.method=='POST':
 		form=AreaKeyForm(request.POST, request.FILES)
 		if form.is_valid():
@@ -32,13 +33,20 @@ def areakey(request):
 			profile.user=request.user
 			if 'file' in request.FILES:
 				profile.file=request.FILES['file']
+		if not request.FILES['file'].name.endswith('.csv'):
+			return HttpResponseRedirect(reverse("home:areakey"))
+		else:
+			# if not request.FILES['file'].name.endswith('.csv'):
+			# 	messages.error(request,'this is not csv file')
 			profile.save()
 			return redirect('home:areakey')
 	else:
 		form=AreaKeyForm()
 	rowda=AreaKey.objects.filter(user=request.user.id).values('rowdata')
+	print(type(rowda))
 	d=[]
 	for k in rowda:
+		print(k)
 		d+=json.loads(k['rowdata'])
 	if request.method=='GET':
 		startdate=request.GET.get('startdate')
@@ -47,7 +55,7 @@ def areakey(request):
 			plc_odr=Order.objects.filter(user=request.user.id, date__range=(startdate, enddate))
 		else:
 			plc_odr=Order.objects.filter(user=request.user.id)
-	return render(request, 'areakey.html', {'form':form, 'd':d, 'plc_odr':plc_odr, 'enddate':enddate, 'startdate': startdate})
+	return render(request, 'areakey.html', {'form':form, 'd':d, 'enddate':enddate, 'startdate': startdate, 'plc_odr':plc_odr})
 
 def user_profile(request):
 	user=get_object_or_404(User, id=request.user.id)
