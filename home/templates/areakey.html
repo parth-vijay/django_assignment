@@ -16,11 +16,12 @@
 				<button type="button" class="active btn btn-primary areakeybtn">Order Upload</button>
 				<button type="button" class="btn btn-secondary areakeybtn">Upload History</button>
 				<button type="button" class="btn btn-secondary areakeybtn"><a href="{% url 'home:map_view' %}">Post Code Map</a></button>
-				<div class="orderhistory" style="display: none;">
+				<div class="orderhistory">
 					<div class="search-container">
-						<form>
-						  <input type="text" placeholder="Search.." name="search" style="width: 400px; border: 1px solid #807c7c;">
-						  <button type="submit">Search</button>
+						<form method="GET" action="{% url 'home:areakey' %}">
+						  	Start Date: <input type="date" id="startDate" name="startdate" width="400px" value="{{startdate}}" />
+							End Date: <input type="date" id="endDate" name="enddate" width="400px" value="{{enddate}}" />
+							<button type="submit">Search</button>
 						</form>
 					</div>
 					<div class="table-responsive">
@@ -59,14 +60,14 @@
 				</div>
 				<div class="orderuploadbtn">
 					<div class="row">
-					  	<div class="col-md-12">
-						  	<form method="POST" action="#" id="draganddropfm" enctype="multipart/form-data">
-						  		{% csrf_token %}
+						<div class="col-md-12">
+							<form method="POST" action="#" id="draganddropfm" enctype="multipart/form-data">
+								{% csrf_token %}
 							  <div class="form-group files">
 								<input type="file" class="form-control" multiple="" name="file">
 							  </div>
-						  	</form>
-					  	</div>
+							</form>
+						</div>
 					</div>
 					<div class="search-container">
 						<form>
