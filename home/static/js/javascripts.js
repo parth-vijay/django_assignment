@@ -1,29 +1,6 @@
 $(document).ready(function(){
+	$('.orderuploadbtn').show()
 	$('.orderhistory').hide()
-	// $('.active').show();
-	// if($('.active')){
-	// 	$('.changeicon').removeClass('fa-plus').addClass('fa-minus')
-	// }
-	// else{
-	// 	$('.changeicon').addClass('fa-plus').removeClass('fa-minus')
-	// }
-	// $('.productmenulist h4 i').click(function(){
-	// 	// $(this).toggleClass("fa-minus");
-	// 	$('.productmenulist ul:nth-child(1)').toggle();
-		
-	// 	// $(this).toggleClass("fa fa-minus");
-	// 	var ele = $('.changeicon');
- //  		if(ele.hasClass('fa-plus')){
-	// 		ele.removeClass('fa-plus').addClass('fa-minus')
- //  		}
-	// 	else{
-	// 		ele.addClass('fa-plus').removeClass('fa-minus')
-	// 	}
-	// });
-	$('.areakeyupload button:nth-child(1)').click(function(){
-		$('.dragndrop .item form').show();
-
-	});
 	var allpanel=$('.productmenulist > ul').hide()
 	$('.productmenulist > h4 > i').click(function(){
 		$('.productmenulist > ul').slideUp();
@@ -32,11 +9,6 @@ $(document).ready(function(){
 
 	$('.orderuploadbtn table tbody tr input[type="checkbox"]').click(function(){
 		var inval= $('.areakeycheckbox:checked').length
-		// console.log(inval)
-		// var inval=$(this).length;
-		// console.log(inval)
-		// $('.selectallbtn').show(this.checked)
-
 		if(inval>0){
 			$('.selectallbtn').show();
 		}
@@ -53,29 +25,22 @@ $(document).ready(function(){
 		}
 	});
 	$('.areakeyupload button:nth-child(2)').click(function(e){
+		// e.preventDefault()
 		var le=$(this).length
+		console.log(le)
 		$('.orderhistory').show()
 		if(le > 0){
 			$('.orderuploadbtn').hide()
 		}
 	});
-	// $('.orderhistory table tbody tr input').click(function(){
-	// 	var inv=$(this).length
-	// 	console.log(inv)
-	// 	if((this.checked)){
-	// 		$('.selectallbtn button:nth-child(1)').show();
-	// 		// $('.selectallbtn .deleteselect').show()
-	// 	}
-	// })
 	$('.areakeyupload button:nth-child(1)').click(function(e){
 		var le=$(this).length
 		$('.orderuploadbtn').show()
 		if(le > 0){
 			$('.orderhistory').hide()
 		}
-	});
 
-	// 
+	}); 
 	$('#draganddropfm input').change(function(){
 		$('#draganddropfm').submit();
 	});
@@ -134,7 +99,6 @@ $(document).ready(function(){
 		// })
 	});
 	$('.confirmationorder').click(function(){
-		// console.log('hello order')
 		var select_order=[];
 		$('.table-responsive table tbody tr input:checked').each(function(){
 			var or_data=$(this).val()
@@ -150,5 +114,5 @@ $(document).ready(function(){
 			}
 		})
 		window.location.reload();
-	})
+	});
 });
