@@ -17,7 +17,6 @@
           geocodeAddress(geocoder, map);
         });
       }
-
       function geocodeAddress(geocoder, resultsMap) {
         var address = document.getElementById('address').value;
         geocoder.geocode({'address': address}, function(results, status) {
@@ -26,7 +25,7 @@
             var marker = new google.maps.Marker({
               map: resultsMap,
               position: results[0].geometry.location,
-              title: address
+              title:address
             });
           } else {
             alert('Geocode was not successful for the following reason: ' + status);
