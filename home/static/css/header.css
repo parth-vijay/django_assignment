@@ -734,8 +734,8 @@ body p {
 
 .search-container input[type=text] {
   padding: 6px;
-  margin-top: 8px;
-  font-size: 17px;
+  /*margin-top: 8px;*/
+  font-size: 9px;
   border: none;
   /*width: 100%;*/
 }
