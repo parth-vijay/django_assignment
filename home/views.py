@@ -40,8 +40,14 @@ def areakey(request):
 	d=[]
 	for k in rowda:
 		d+=json.loads(k['rowdata'])
-	plc_odr=Order.objects.filter(user=request.user.id)
-	return render(request, 'areakey.html', {'form':form, 'd':d, 'plc_odr':plc_odr})
+	if request.method=='GET':
+		startdate=request.GET.get('startdate')
+		enddate=request.GET.get('enddate')
+		if startdate:
+			plc_odr=Order.objects.filter(user=request.user.id, date__range=(startdate, enddate))
+		else:
+			plc_odr=Order.objects.filter(user=request.user.id)
+	return render(request, 'areakey.html', {'form':form, 'd':d, 'plc_odr':plc_odr, 'enddate':enddate, 'startdate': startdate})
 
 def user_profile(request):
 	user=get_object_or_404(User, id=request.user.id)
@@ -115,7 +121,5 @@ def place_order(request):
 		AreaKey.objects.filter(pk=file_id).update(rowdata=strdata)
 	return HttpResponse("Success!")
 
-
 def map_view(request):
 	return render(request, 'map.html')
-# Create your views here
