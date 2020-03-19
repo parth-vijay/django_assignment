@@ -16,6 +16,17 @@ $(document).ready(function(){
 			$('.selectallbtn').hide();
 		}
 	});
+	$('.orderuploadbtn table thead tr th input[type="checkbox"]').click(function(){
+		var seltal=$(this).length
+		console.log(seltal)
+		if(seltal>0){
+			$('.selectallbtn').show();
+		}
+		else{
+			$('.selectallbtn').hide();
+		}
+	})
+
 	$('.table-responsive table thead tr th:nth-child(1) input').click(function(){
 		if(this.checked){
 			$('.table-responsive table tbody tr th input').prop('checked', true)
