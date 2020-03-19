@@ -325,17 +325,22 @@ h4 {
 
 .areakeyinfo{
     background: #beefeff5;
-    width: 100%;
+    width: 76%;
     float: left;
 }
-.areakeyinner {
+/*.areakeyinner {
     width: 1117px;
     margin: 0 auto;
+}*/
+.navigationbar {
+    width: 100%;
+    margin: 21px 0px;
+    float: left;
 }
 .areasection {
     width: 100%;
     float: left;
-    margin: 17px 0;
+    padding: 9px 0px 8px 17px;
 }
 .arealeft {
     width: 49%;
@@ -378,6 +383,7 @@ h4 {
 .areakeyupload {
     width: 100%;
     float: left;
+    padding: 9px;
 }
 .areakeyupload .areakeybtn {
     background: #6c757d;
