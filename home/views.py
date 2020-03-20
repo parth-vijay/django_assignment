@@ -99,7 +99,6 @@ def csv_export(request):
 			print(seled_row)
 			writer.writerow({'cust_name':seled_row['cust_name'], 'order_num':seled_row['order_num'], 'date':seled_row['date'], 'post':seled_row['post']})
 		return response
-
 		return HttpResponse('csv_file')
 
 @login_required
