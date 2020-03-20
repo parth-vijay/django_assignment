@@ -1,7 +1,7 @@
 {% extends "index.html" %}{% load static %}
 {% block content %}
 <section>
-	<div class="navigationbar">
+	<div class="container">
 		<div class="menuleft">
 			<div class="menuproduct">
 				<h3>AreaKey</h3>
@@ -73,7 +73,7 @@
 								<form method="POST" action="{% url 'home:areakey' %}" id="draganddropfm" enctype="multipart/form-data">
 									{% csrf_token %}
 								  <div class="form-group files">
-									<input type="file" class="form-control" multiple="" name="file" accept="text/csv">
+									<input type="file" class="form-control uploadfileinpt" multiple="" name="file" accept="csv">
 								  </div>
 								</form>
 							</div>
