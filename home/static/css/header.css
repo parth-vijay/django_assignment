@@ -541,8 +541,9 @@ button.confirmationorder {
 .menuproduct {
     float: left;
     width: 100%;
-    background: #fff;
+    /*background: #fff;*/
     border-radius: 20px 0 0 0;
+    padding: 0px;
 }
 .menuproduct h3 {
     float: left;
@@ -611,7 +612,7 @@ button.confirmationorder {
 }
 .productcontent{
     float: left;
-    width: 76%;
+    width: 70%;
     margin-bottom: 21px;
     padding-bottom: 25px;
 }
@@ -810,11 +811,13 @@ a.button.areakeybutton {
 .areakeybtn a:hover {
     background-color: blue;
 }
-
 .files button {
     width: 100%;
     padding: 6px 0px;
     /* margin: 6px 0px; */
     background: #dfdfe8;
 }
+
+
+    
   /* End search button css*/
