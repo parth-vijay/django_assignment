@@ -43,10 +43,8 @@ def areakey(request):
 	else:
 		form=AreaKeyForm()
 	rowda=AreaKey.objects.filter(user=request.user.id).values('rowdata')
-	print(type(rowda))
 	d=[]
 	for k in rowda:
-		print(k)
 		d+=json.loads(k['rowdata'])
 	if request.method=='GET':
 		startdate=request.GET.get('startdate')
