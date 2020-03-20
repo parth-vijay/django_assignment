@@ -1,36 +1,63 @@
 {% extends "index.html" %}{% load static %}
 {% block content %}
-    <div id="floating-panel">
-      <input id="address" type="textbox" value="" placeholder="PostCode...">
-      <input id="submit" type="button" value="Geocode">
-    </div>
-    <div id="map"></div>
-    <script>
-      function initMap() {
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 8,
-          center: {lat: -34.397, lng: 150.644}
-        });
-        var geocoder = new google.maps.Geocoder();
+	<!-- <div style="margin: 42px 11px; width: 23%; float: left;">
+		<div class="menuproduct">
+			<h3>AreaKey</h3>
+			<div class="productmenulist">
+				<h4 class="firstmenu"><a href="{% url 'home:areakey' %}">AreaKey<sup>&reg;</sup> Download/Upload Area</a></h4>
+				<h4 class="firstmenu"><a href="{% url 'home:map_view' %}">AreaKey<sup>&reg;</sup> Map Results Viewer</a></i></h4>
+			</div>
+		</div>
+	</div>
+	<div id="floating-panel">
+		<input id="address" type="textbox" value="" placeholder="PostCode...">
+		<input id="submit" type="button" value="Geocode">
+	</div>
+	<div id="map"></div> -->
+<div class="container">
+	<div class="row">
+		<div class="col-md-3 menuproduct">
+			<h3>AreaKey</h3>
+			<div class="productmenulist">
+				<h4 class="firstmenu"><a href="{% url 'home:areakey' %}">AreaKey<sup>&reg;</sup> Download/Upload Area</a></h4>
+				<h4 class="firstmenu"><a href="{% url 'home:map_view' %}">AreaKey<sup>&reg;</sup> Map Results Viewer</a></i></h4>
+			</div>
+		</div>
+		<div class="col-md-9">
+			<div id="floating-panel">
+				<input id="address" type="textbox" value="" placeholder="PostCode...">
+				<input id="submit" type="button" value="Geocode">
+			</div>
+			<div id="map"></div>
+		</div>
+	</div>
+</div>
+	<script>
+	  function initMap() {
+		var map = new google.maps.Map(document.getElementById('map'), {
+		  zoom: 5,
+		  center: {lat: 55.3781, lng: 3.4360}
+		});
+		var geocoder = new google.maps.Geocoder();
 
-        document.getElementById('submit').addEventListener('click', function() {
-          geocodeAddress(geocoder, map);
-        });
-      }
-      function geocodeAddress(geocoder, resultsMap) {
-        var address = document.getElementById('address').value;
-        geocoder.geocode({'address': address}, function(results, status) {
-          if (status === 'OK') {
-            resultsMap.setCenter(results[0].geometry.location);
-            var marker = new google.maps.Marker({
-              map: resultsMap,
-              position: results[0].geometry.location,
-              title:address
-            });
-          } else {
-            alert('Geocode was not successful for the following reason: ' + status);
-          }
-        });
-      }
-    </script>
+		document.getElementById('submit').addEventListener('click', function() {
+		  geocodeAddress(geocoder, map);
+		});
+	  }
+	  function geocodeAddress(geocoder, resultsMap) {
+		var address = document.getElementById('address').value;
+		geocoder.geocode({'address': address}, function(results, status) {
+		  if (status === 'OK') {
+			resultsMap.setCenter(results[0].geometry.location);
+			var marker = new google.maps.Marker({
+			  map: resultsMap,
+			  position: results[0].geometry.location,
+			  title:address
+			});
+		  } else {
+			alert('Geocode was not successful for the following reason: ' + status);
+		  }
+		});
+	  }
+	</script>
 {% endblock %}
