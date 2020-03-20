@@ -127,4 +127,6 @@ def place_order(request):
 	return HttpResponse("Success!")
 
 def map_view(request):
-	return render(request, 'map.html')
+	post=Order.objects.filter(user=request.user.id)
+	# print(post)
+	return render(request, 'map.html', {'post':post})
