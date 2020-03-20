@@ -43,21 +43,24 @@
 		document.getElementById('submit').addEventListener('click', function() {
 		  geocodeAddress(geocoder, map);
 		});
+		geocodeAddress(geocoder, map);
 	  }
 	  function geocodeAddress(geocoder, resultsMap) {
 		var address = document.getElementById('address').value;
-		geocoder.geocode({'address': address}, function(results, status) {
+		{% for mp in post %}
+		geocoder.geocode({'address': '{{mp.postcode}}'}, function(results, status) {
 		  if (status === 'OK') {
 			resultsMap.setCenter(results[0].geometry.location);
 			var marker = new google.maps.Marker({
 			  map: resultsMap,
 			  position: results[0].geometry.location,
-			  title:address
+			  title:'{{mp.customer_order}}, {{mp.order_no}}, {{mp.date}}, {{mp.postcode}}'
 			});
 		  } else {
-			alert('Geocode was not successful for the following reason: ' + status);
+			// alert('Geocode was not successful for the following reason: ' + status);
 		  }
 		});
+		{% endfor %}
 	  }
 	</script>
 {% endblock %}
