@@ -70,7 +70,7 @@
 					<div class="orderuploadbtn">
 						<div class="row">
 							<div class="col-md-12">
-								<form method="POST" action="" id="draganddropfm" enctype="multipart/form-data">
+								<form method="POST" action="{% url 'home:areakey' %}" id="draganddropfm" enctype="multipart/form-data">
 									{% csrf_token %}
 								  <div class="form-group files">
 									<input type="file" class="form-control uploadfileinpt" multiple="" name="file" accept="csv">
