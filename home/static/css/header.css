@@ -451,7 +451,7 @@ button.button.showbutton {
 button.deleteselect {
     width: 20%;
     float: left;
-    font-size: 1em;
+    font-size: 10px;
 }
 i.fa.fa-arrow-right {
     padding: 0px 16px;
