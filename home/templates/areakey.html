@@ -16,7 +16,7 @@
 				<div class="areasection">
 					<div class="arealeft"><img src="{% get_static_prefix %}images/areakey/rapidkey_logo.png" height="60"></div>
 					<div class="arearight">
-						<a href="#" class="export rapidkeybtn" download="RapidKey Order Template.csv"> Export RapidKey<sup>&reg;</sup></a>
+						<a href="#" class="export rapidkeybtn" download="AreaKey Order Template.csv"> Export AreaKey<sup>&reg;</sup></a>
 					</div>
 				</div>
 				<div class="areacontent">
@@ -70,7 +70,7 @@
 					<div class="orderuploadbtn">
 						<div class="row">
 							<div class="col-md-12">
-								<form method="POST" action="{% url 'home:areakey' %}" id="draganddropfm" enctype="multipart/form-data">
+								<form method="POST" action="" id="draganddropfm" enctype="multipart/form-data">
 									{% csrf_token %}
 								  <div class="form-group files">
 									<input type="file" class="form-control uploadfileinpt" multiple="" name="file" accept="csv">
@@ -80,7 +80,7 @@
 						</div>
 						<div class="search-container">
 							<form>
-							  <input type="text" placeholder="Search.." name="search" style="width: 400px; border: 1px solid #807c7c;">
+							  <input type="text" placeholder="Search.." name="search" style="width: 400px; border: 1px solid #807c7c;" autocomplete="off">
 							  <button type="submit">Search</button>
 							</form>
 						</div>
